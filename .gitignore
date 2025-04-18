@@ -1,0 +1,55 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules (if you ever use Node.js tooling later)
+node_modules/
+
+# VS Code settings
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Build directories (optional: if you use a bundler later)
+dist/
+build/
+
+# Cache and system-specific
+.cache/
+*.swp
+
+# Git ignore backups
+*~
+
+# Image editing tools
+*.psd
+*.xcf
+
+# Ignore Python cache if you ever use it
+__pycache__/
+
+# Ignore deployment or SSH keys if stored locally
+*.pem
+*.key
+*.crt
+
+# Ignore compiled or packaged files
+*.zip
+*.tar.gz
+
+# Ignore test output (optional)
+coverage/
+
+
+# my folders
+prev_version/
+archive/
+Progress_PICS/
+designassets_ideas/
+
+
+
+
+
