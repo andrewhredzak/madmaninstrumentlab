@@ -185,15 +185,41 @@
         as they're often called in cryptography — exchange public keys. Each of them also has a private key, 
         and using both, they generate the same shared secret key. They don’t actually send the secret key; instead, 
         they each calculate it on their own. After that, they authenticate each other to make sure they're really
-         talking to the right person.
+        talking to the right person.
 
     </p>
 
     <h2>Version Automation Control</h2>
 
+    <p>
+        Repo lives in <code>/var/www/html/portfolio/</code>.<br>
+        Added an SSH deploy key <code></code>~/.ssh/id_ed25519</code>, then a shell script:
+
+
+        <pre><code>
+        #!/bin/bash
+        cd /var/www/html/portfolio || exit 1
+        echo "Pulling latest changes from GitHub..."
+        git pull origin master
+        # restart if needed
+        systemctl reload nginx
+        echo "Portfolio updated."
+        </code></pre>
+
+        Confirmed the key works: ssh -T git@github.com should greet me.<br><br>
+
+
+        Thanks for reading, feel free to reach out and say hello!<br>
+        — Andrew
+        
+    </p>
+
+
     
     <h2>ACRONYMS</h2>
     <p>
+
+        *for reference:<br>
         <b>HTTP:</b> hyper text transfer protocol<br>
         <b>DNS:</b> domain name system. translates domain names (like google.com) into IP addresses (like 142.250.64.**)<br>
         <b>DNS Server:</b> domain name system server<br>
