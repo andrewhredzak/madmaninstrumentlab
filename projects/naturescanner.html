@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../designassets/styles.css">
+    <link rel="stylesheet" href="style.css">
+
     <style>
         body {
             font-family: "Courier New", Courier, monospace;
@@ -76,7 +78,8 @@
 
 
     <img src="../designassets/images/naturescanner/DroneFieldDemosetup.png" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
-
+    <h2>Drone Perception and Localization system Proof of Concept</h2>
+    <h2>Description</h2>
     <p>
         Nature Scanner is a weather-resistant, multi-sensor environmental sensing device developed as a proof-of-concept hardware platform 
         for drone perception and localization. This device has potential uses in environmental sensing for agricultural applications like scanning
@@ -97,5 +100,60 @@
 
 
     </p>
+
+    <h2>Motivation</h2>
+    <h2>Block Diagram</h2>
+    <img src="../designassets/images/naturescanner/NS_blockdiagram_temp.png" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+    <h2>Hardware</h2>
+    <p>
+        <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Component</th>
+                <th>Specs / Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="1">Microcontroller</td>
+                <td>ESP32-CAM module</td>
+                <td>ESP32-D0WDQ6-V3 (revision v3.1) chip</td>
+              </tr>
+              <tr>
+                <td rowspan="2">Sensor</td>
+                <td>OV2640 Camera Sensor</td>
+                <td>2.0 MP Color CMOS UXGA</td>
+              </tr>
+              <tr>
+                <td>Ublox NEO-6M-0-001</td>
+                <td>GPS module ❓</td>
+              </tr>
+              <tr>
+                <td rowspan="2">Power Supply</td>
+                <td>Lithium Polymer Battery</td>
+                <td>3.7V nominal</td>
+              </tr>
+              <tr>
+                <td>Voltage Regulator</td>
+                <td>3.7–9V input to 12V output</td>
+              </tr>
+              <tr>
+                <td>Enclosure</td>
+                <td>ABS Plastic IP65 Junction Box</td>
+                <td>Dustproof / Waterproof</td>
+              </tr>
+              <tr>
+                <td>Serial Communication</td>
+                <td>HiLetgo FT232RL USB to TTL Converter</td>
+                <td>USB to UART (Serial) connection</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          
+    </p>
+    <h2>Software/Firmware</h2>
+    <h2>Software functionality</h2>
 </body>
 </html>
