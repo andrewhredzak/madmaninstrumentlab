@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Scanner | Andrew Hredzak</title>
+    <link rel="icon" href="../designassets/icons/snap_favicon_transcrop3.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../designassets/styles.css">
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            margin: 20px;
+            background-color: #000;
+            color: #fff;
+        }
+        h1{
+            
+            color: #fff;
+        }
+        .header-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header-box h1 {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        h2, h3 {
+            color: #73b9ff;
+        }
+        code, pre {
+            background: #111;
+            color: #34813d;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        b {
+            color: #fff;
+        }
+        ul {
+            margin-left: 1.5em;
+        }
+        
+        
+    </style>
+</head>
+<body>
+
+    <div class="header-box">
+    <h1>Nature Scanner</h1>
+    </div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+    </nav>
+
+
+    <img src="../designassets/images/naturescanner/DroneFieldDemosetup.png" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+
+    <p>
+        Nature Scanner is a weather-resistant, multi-sensor environmental sensing device developed as a proof-of-concept hardware platform 
+        for drone perception and localization. This device has potential uses in environmental sensing for agricultural applications like scanning
+         microclimates or monitoring conditions inside storage facilities. I presented my project during Drone day 2025, an academic/industry 
+         UAV workshop hosted by the University of Arizona Agricultural Department in Tucson Arizona. <br><br>
+
+        This device collects temperature, humidity, RGB images and GPS coordinates and stores them locally on an SD card. This suite of environmental
+         and positional data is key for developing advanced drone perception and localization capabilities. The device consists of two submodules each
+          controlled by an ESP32-CAM microcontroller development board. Both boards run custom firmware that allows the chips to communicate with sensor 
+          peripherals and can also send data wirelessly between boards. Sensor readings are managed by FreeRTOS,a real time operating system that allows 
+          NS to collect data to be collected continuously and reliably.<br><br>
+
+        The “Josie” module utilizes an OmniVision OV2640 CMOS camera to capture 2 Megapixel (1600 x 1200 UXGA) images set to one frame per second. 
+        It was specifically designed to save these high-quality, uncompressed images directly onto the onboard micro SD card for later retrieval and analysis.
+        The “Adam” module uses a Sensirion SHT31 solid state temperature/humidity sensor alongside a HiLetgo GY-NEO6MV2 NEO-6M GPS. The NEO6 GPS receives 
+        a satellite signal at L1 band 1575.42 MHz. GPRMC sentences are logged in a text file with UTC time, position status, lat, lon, speed (knots), date and more.
+          Temperature and relative humidity (at resolution of 0.01 °C/%RH) are also stored in the same text file with a timestamp. <br><br>
+
+
+    </p>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi web server | Andrew Hredzak</title>
+    <link rel="icon" href="../designassets/icons/snap_favicon_transcrop3.png" type="image/png">
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            margin: 20px;
+            background-color: #000;
+            color: #fff;
+        }
+        h1{
+            color: #fff;
+        }
+        .header-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header-box h1 {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        h2, h3 {
+            color: #73b9ff;
+        }
+        code, pre {
+            background: #111;
+            color: #34813d;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        b {
+            color: #fff;
+        }
+        ul {
+            margin-left: 1.5em;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="header-box">
+        <h1>Pi web server</h1>
+    </div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+    </nav>
+
+
+    <img src="../designassets/images/webserver/zeroraspi_whiteblack_trans_invert.PNG" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+
+    <p>
+        I thought it would be a good idea to share some of the artifacts and my thought process 
+        setting up my web server on my Raspberry Pi Zero 2 W. I hang out and grab coffee with my friend 
+        Evan every few weeks and he graciously and randomly gifted me this pi. I was very grateful and it it 
+        was perfect timing as I was planning to put together this portfolio.  
+
+    </p>
+    
+    <!---- SOFTWARE / SERVICES -->
+    <h2>Software Tools / Utilities / Services</h2>
+    <p><strong>NGINX</strong> list the concepts.</p>
+    
+    <!---- NETWORKING CONCEPTS -->
+    <h2>Networking Concepts</h2>
+    <p>
+        First i decided to register my domain names on Squarespace. Squarespace is a website building and hosting company, 
+    but will just be purchasing my domain from them. The only configurations I did on their site was assign the <em>host</em>, 
+    <em>type</em>, <em>TTL</em> and public&nbsp;IP address. I used a custom nameserver for DNS resolution. Use Domain Nameservers setting to
+     assign a minimum of 2 nameservers at all times.
+    </p>
+    
+      <ul>
+        <li><strong>HOST</strong> – sub-domain/host part of the record</li>
+        <li><strong>TYPE</strong> – “A” record mapping a domain to an IPv4 address</li>
+        <li><strong>TTL</strong> – how long (seconds) resolvers cache the record</li>
+        <li><strong>DATA</strong> – IPv4 address returned for the lookup</li>
+      </ul>
+    
+      <h3>DNS Server Types</h3>
+      <ul>
+        <li>Recursive resolver (ISP or <code>1.1.1.1</code>)</li>
+        <li>Root name server</li>
+        <li>TLD name server (<code>.io</code> for me)</li>
+        <li>Authoritative name server (Squarespace)</li>
+      </ul>
+    
+      <h3>DNS Query Modes</h3>
+      <ul>
+        <li><strong>Recursive</strong> – “do everything for me”</li>
+        <li><strong>Iterative</strong> – resolver returns the next server to ask</li>
+        <li><strong>Non-recursive</strong> – answer already cached</li>
+      </ul>
+    
+      <h3>Common DNS Record Types</h3>
+      <ul>
+        <li>A, AAAA, CNAME, MX, TXT, NS, PTR, SRV, SOA</li>
+      </ul>
+
+      <h2>Web Server Choice</h2>
+    <p>
+    Next I looked at two different web servers I could use on my Pi.  
+    Apache and <strong>NGINX</strong> are two of the most popular and I went with NGINX because it provides a 
+    lightweight architecture which is optimized for high traffic which is perfect for the Zero.  
+    </p>
+
+    <h3>Handy NGINX Commands</h3>
+    <ul>
+      <li><code>sudo systemctl start nginx</code>   – start service</li>
+      <li><code>sudo systemctl stop nginx</code>    – stop service</li>
+      <li><code>sudo systemctl restart nginx</code> – restart after config edits</li>
+    </ul>
+
+    <!---- ROUTER / PORTS -->
+    <h2>Router-Side Work</h2>
+    <p>
+        In order to allow external&nbsp; devices to access services on my local network, I need to enable port forwarding.<br>
+        <br>
+        Port forwarding is a technique within Network Address Translation (NAT) that maps an incoming request from an 
+        external IP address and port to a specific internal IP address and port on a local network. This allows external 
+        devices to access services hosted on private network devices, such as web server.<br>
+        <br>
+        The NGINX config file sets up a secure HTTPS server block that listens in on a port. 
+        It serves content from where I host my website code. <br>
+        The web server uses SSL certificates from Let's 
+        Encrypt for my domain www.andrewhredzak.io, enabling encrypted traffic for the site.<br> 
+        I had originally tried port&nbsp; 80 as this is the standard port but it was unsecure, as was 8080. 
+        After changing it to 443 it was secure and worked.
+    </p>
+
+    <h3>Common Web Ports</h3>
+    <p>
+    <strong>80</strong> – standard, default port for HTTP<br>
+    <strong>8080</strong> – alternate HTTP<br>
+    <strong>443</strong> – standard, default port for HTTPS. used for encrypted web traffic<br>
+    </p>
+
+
+    <h2>Cloudflare SSL services</h2>
+    <p>
+        I assigned my domain to Cloudflare; set encryption mode to Full. After, 
+        I generated an Origin Certificate + Key in Cloudflare and saved them on the Pi here:
+        <br><br>
+   
+        <code>/etc/ssl/private/origin.key</code><br>
+        <code>/etc/ssl/certs/origin.crt</code>
+        <br><br>
+
+        I installed and Ran Certbot for automatic renewals—will decide later whether to stick 
+        with Let’s Encrypt or Cloudflare Origin certs (don’t serve both simultaneously).<br><br>
+
+
+        <code>Install certbot</code><br>
+        <code>sudo apt update</code><br>
+        <code>sudo apt install certbot python3-certbot-nginx -y</code><br>
+        <code>sudo certbot --nginx -d www.andrewhredzak.io</code><br>
+        <br><br>
+
+
+        SSL (Secure Sockets Layer) and TLS (Transport Layer Security) are the protocols that encrypt and protect your 
+        data when it's sent over the internet. <br>
+        There are five phases in the SSL/TLS handshake process, and something 
+        called the Diffie-Hellman protocol is used during the second and third phases. Client and server or Amy and Bob, 
+        as they're often called in cryptography — exchange public keys. Each of them also has a private key, 
+        and using both, they generate the same shared secret key. They don’t actually send the secret key; instead, 
+        they each calculate it on their own. After that, they authenticate each other to make sure they're really
+        talking to the right person.
+
+    </p>
+
+    <h2>Version Automation Control</h2>
+
+    <p>
+        Repo lives in <code>/var/www/html/portfolio/</code>.<br>
+        Added an SSH deploy key <code></code>~/.ssh/id_ed25519</code>, then a shell script:
+
+
+        <pre><code>
+        #!/bin/bash
+        cd /var/www/html/portfolio || exit 1
+        echo "Pulling latest changes from GitHub..."
+        git pull origin master
+        # restart if needed
+        systemctl reload nginx
+        echo "Portfolio updated."
+        </code></pre>
+
+        Confirmed the key works: ssh -T git@github.com should greet me.<br><br>
+
+
+        Thanks for reading, feel free to reach out and say hello!<br>
+        — Andrew
+        
+    </p>
+
+
+    
+    <h2>ACRONYMS</h2>
+    <p>
+
+        *for reference:<br>
+        <b>HTTP:</b> hyper text transfer protocol<br>
+        <b>DNS:</b> domain name system. translates domain names (like google.com) into IP addresses (like 142.250.64.**)<br>
+        <b>DNS Server:</b> domain name system server<br>
+        <b>HTML:</b> hyper text markup language<br>
+        <b>CSS:</b> cascaded style sheets<br>
+        <b>TLD:</b> top level domain<br>
+        <b>SLD:</b> second level domain<br>
+        <b>www:</b> world wide web<br>
+        <b>URL:</b> uniform resource locator<br>
+        <b>URI:</b> uniform resource identifier<br>
+        <b>ISP:</b> internet service provider<br>
+        <b>TTL:</b> time to live<br>
+        <b>arp -a :</b> address resolution protocol<br>
+        <b>ARPANET:</b> advanced research projects agency network<br>
+        <b>SSL:</b> secure socket layer<br>
+        <b>TLS:</b> transport layer security<br>
+        <b>NAT:</b> network address translation<br>
+        <b>MAC:</b> message authentication code (cryptographic technique)<br>
+        <b>MAC:</b> media access control (address)<br>
+        <b>DSL:</b> Digital subscriber line<br>
+        <b>NIC:</b> network interface controller<br>
+        <b>FTP:</b> file transfer protocol<br>
+        <b>DMZ:</b> demilitarization zone<br>
+        <b>.pem:</b> file for privacy enhanced mail for the priv key<br>
+        <b>cURL:</b> client for URL<br>
+        <b>DDos:</b> distributed denial of service<br>
+    </p>
+</body>
+</html>
