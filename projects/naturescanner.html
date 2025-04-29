@@ -79,6 +79,10 @@
 
     <img src="../designassets/images/naturescanner/DroneFieldDemosetup.png" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
     <h2>Drone Perception and Localization system Proof of Concept</h2>
+
+    <h2>Block Diagram</h2>
+    <img src="../designassets/images/naturescanner/NS_protoboard-system-blockDiagram.drawio.png" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+    
     <h2>Description</h2>
     <p>
         Nature Scanner is a weather-resistant, multi-sensor environmental sensing device developed as a proof-of-concept hardware platform 
@@ -101,9 +105,36 @@
 
     </p>
 
-    <h2>Motivation</h2>
-    <h2>Block Diagram</h2>
-    <img src="../designassets/images/naturescanner/NS_blockdiagram_temp.png" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+    <h2>Software and Firmware: Architecture, Implementation, and Technical Challenges</h2>
+    <p>
+      At the highest level, nature scanner consists of two versions of custom firmware that live on two ESP32-cam microcontrollers. 
+      I used Espressifs ESP IDF SDK to adapt prebuilt drivers to initialize and control sensors as well as communicate between dev boards. 
+      FreeRTOS xTaskCreate was used to schedule telemetry, commanding and data flow processes enabling simultaneous management of resources.<br><br>
+
+      Each firmware application follows standard C practices with initialization, task definitions, and entry points in main.c. 
+      Leveraging the ESP-IDF build system, function definitions and prototypes are organized into component folders. 
+      This modular structure enhances maintainability and allows for easier reconfiguration of sensor assignments between the two boards.<br><br>
+
+
+      The primary motivation for the two-controller architecture stemmed from hardware limitations: GPIO ports required to communicate with  
+      peripherals over I2C/UART conflicted with SD card interface pins when operating in 4-bit SDMMC mode. The ESP32's SD/MMC host peripheral 
+      pins are hardwired to the physical SD card slot, leaving insufficient GPIOs for other components on a single board. Attempting a single-board
+      design resulted in DMA and write block errors during simultaneous SD card access and peripheral operation.<br><br>
+
+      Communication protocols include I2C for the SHT31 temp sensor and UART for the NEO6M GPS module. The ESP32 interfaces with the OV2640 
+      camera via SPI to read image data, which is subsequently written to the SD card using the SDMMC protocol.<br><br>
+
+      Writing the SHT31 temp sensor driver initially proved challenging. The suggested driver within the framework (i2c.c) was an older, 
+      procedural library focused on sequential I2C operations (create, start, write). Instead, I utilized the ESP-IDF (i2c_master driver), 
+      which is designed around bus/device handles and allows for complete transactions. Utilizing functions like i2c_master_transmit() within 
+      this driver, I successfully implemented commands specified from the Sensirion user manual, such as 'Periodic Data Acquisition Mode', 
+      to continuously retrieve sensor data.<br><br>
+
+
+
+    </p>
+
+   
     <h2>Hardware</h2>
     <p>
         <table class="custom-table">
@@ -153,7 +184,7 @@
           
           
     </p>
-    <h2>Software/Firmware</h2>
-    <h2>Software functionality</h2>
+    
+    
 </body>
 </html>
