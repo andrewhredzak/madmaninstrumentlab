@@ -82,11 +82,11 @@
     <div style="text-align: center; margin: 20px 0;">
         <a href="../designassets/file_downloads/NatureScanDevice_BOM.csv" download
            style="display: inline-block; background: #3d6d43; color: #fff; font-weight: bold; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-size: 1.1em; border: none; transition: background 0.2s; margin-right: 12px;">
-            &#128190; Download Bill of Materials (CSV)
+            &#128190; Download Hardware BOM (CSV)
         </a>
         <a href="../designassets/file_downloads/NS_DDD_TEMP.pdf" download
            style="display: inline-block; background: #3d6d43; color: #fff; font-weight: bold; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-size: 1.1em; border: none; transition: background 0.2s;">
-            &#128196; Download Design Document (PDF)
+            &#128196; Download NS Design Document (PDF)
         </a>
     </div>
     <h2>Drone Perception and Localization system Proof of Concept</h2>
@@ -148,55 +148,87 @@
     </p>
 
    
-    <h2>Hardware</h2>
-    <p>
-        <table class="custom-table">
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Component</th>
-                <th>Specs / Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td rowspan="1">Microcontroller</td>
-                <td>ESP32-CAM module</td>
-                <td>ESP32-D0WDQ6-V3 (revision v3.1) chip</td>
-              </tr>
-              <tr>
-                <td rowspan="2">Sensor</td>
-                <td>OV2640 Camera Sensor</td>
-                <td>2.0 MP Color CMOS UXGA</td>
-              </tr>
-              <tr>
-                <td>Ublox NEO-6M-0-001</td>
-                <td>GPS module ❓</td>
-              </tr>
-              <tr>
-                <td rowspan="2">Power Supply</td>
-                <td>Lithium Polymer Battery</td>
-                <td>3.7V nominal</td>
-              </tr>
-              <tr>
-                <td>Voltage Regulator</td>
-                <td>3.7–9V input to 12V output</td>
-              </tr>
-              <tr>
-                <td>Enclosure</td>
-                <td>ABS Plastic IP65 Junction Box</td>
-                <td>Dustproof / Waterproof</td>
-              </tr>
-              <tr>
-                <td>Serial Communication</td>
-                <td>HiLetgo FT232RL USB to TTL Converter</td>
-                <td>USB to UART (Serial) connection</td>
-              </tr>
-            </tbody>
-          </table>
-          
-          
-    </p>
+    <h2>Hardware BOM</h2>
+    <p> <table class="custom-table">
+      <thead>
+          <tr>
+              <th>Category</th>
+              <th>Component</th>
+              <th>Description</th>
+              <th>Approximate Cost (USD)</th>
+              <th>Purchase</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>microcontroller</td>
+              <td>ESP32-CAM dev board x2</td>
+              <td>dual-core 32-bit LX6 CPU, 2MP OV2640 cam module, microSD slot, wifi, bluetooth</td>
+              <td>$14.00</td>
+              <td>Purchased</td>
+          </tr>
+          <tr>
+              <td rowspan="2">Sensor</td>
+              <td>SHT31-DIS-B Sensor</td>
+              <td>High-precision humidity and temperature sensor, I2C interface</td>
+              <td>$12.88</td>
+              <td>Purchased</td>
+          </tr>
+          <tr>
+              <td>Ublox NEO-M6 GPS Module</td>
+              <td>GPS module with 1-2 meter accuracy, EEPROM supports multiple satellite systems</td>
+              <td>$9.00</td>
+              <td>Purchased</td>
+          </tr>
+          <tr>
+              <td>Encloser</td> <td>ABS Plastic IP65 Enclosure</td>
+              <td>Waterproof, dustproof project enclosure (5.9 x 3.9 x 2.8 inch)</td>
+              <td>$13.99</td>
+              <td>Purchased</td>
+          </tr>
+          <tr>
+              <td>serial interface</td>
+              <td>HiLetgo Serial adapter</td>
+              <td>FT232RL Mini USB to TTL Serial Converter Adapter Module</td>
+              <td>$6.49</td>
+              <td>Purchased</td>
+          </tr>
+          <tr>
+              <td>memory</td>
+              <td>SD card</td>
+              <td>SanDisk 32GB 2-Pack Ultra MicroSDHC UHS-1 Memory Card (2x32GB)</td>
+              <td>$13.56</td>
+              <td>Purchased</td>
+          </tr>
+          <tr>
+              <td>PCB</td>
+              <td>PCB</td>
+              <td>Prototype PCB Solderable Breadboard(5 Pack + 1 Mini Board, Red)</td>
+              <td>$8.49</td>
+              <td>Purchased</td>
+          </tr>
+          <tr>
+            <td rowspan="3">Power</td>
+              <td>voltage regulator</td>
+              <td>AMS1117-3.3V Buck Module LDO 800MA</td>
+              <td>$0.60</td>
+              <td>Purchased</td>
+          </tr>
+          <tr>
+              <td>voltage regulator</td>
+              <td>5v Regulator Module Mini Voltage Reducer DC 4.5-24V 12V 24V to 5V 3A</td>
+              <td>$1.10</td>
+              <td>Purchased</td>
+          </tr>
+          <tr>
+              <td>battery</td>
+              <td>7.4V LiPo Battery 600mAh 2S 30C Rechargeable Lithium Polymer Batteries</td>
+              <td>$17.00</td>
+              <td>Purchased</td>
+          </tr>
+      </tbody>
+  </table>
+</p> 
 
 
     <h2>Development Environment</h2>
