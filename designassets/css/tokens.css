@@ -1,0 +1,15 @@
+:root {
+    --clr-bg: #000;
+    --clr-fg: #fff;
+    --clr-accent: #1e90ff;
+    --clr-subheading: #73b9ff;
+    --clr-code-bg: #111;
+    --clr-code-text: #34813d;
+  
+    --font-body: 'Courier New', Courier, monospace;
+  
+    --space-1: 10px;
+    --space-2: 15px;
+    --radius: 4px;
+  }
+  

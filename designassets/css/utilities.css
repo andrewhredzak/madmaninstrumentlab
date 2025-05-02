@@ -1,0 +1,32 @@
+h1 {
+    color: var(--clr-fg);
+  }
+  
+  h2, h3 {
+    color: var(--clr-subheading);
+  }
+  
+  code, pre {
+    background: var(--clr-code-bg);
+    color: var(--clr-code-text);
+    padding: 2px 4px;
+    border-radius: var(--radius);
+  }
+  
+  a {
+    color: var(--clr-accent);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  b {
+    color: var(--clr-fg);
+  }
+  
+  ul {
+    margin-left: 1.5em;
+  }
+  
