@@ -1,15 +1,36 @@
+/*design tokens (colors, spacing, typography)  */
+
+
+
 :root {
-    --clr-bg: #000;
+    --clr-bg: #6E6B64;
     --clr-fg: #fff;
-    --clr-accent: #1e90ff;
-    --clr-subheading: #73b9ff;
-    --clr-code-bg: #111;
+    --clr-accent: #2C6185;
+    --clr-subheading: #B36700;
+    --clr-code-bg: #7be099;
     --clr-code-text: #34813d;
   
-    --font-body: 'Courier New', Courier, monospace;
+    
+    --font-header: 'Special Gothic Expanded One', sans-serif;
+    --font-body: 'Source Code Pro', monospace;
+    --font-code: 'IBM Plex Mono', monospace;
+    --font-accent: 'Comfortaa', cursive;
+
   
     --space-1: 10px;
     --space-2: 15px;
     --radius: 4px;
   }
   
+
+
+/*archive
+
+--font-body: 'Courier New', Courier, monospace;
+--clr-bg: #000;
+    --clr-fg: #fff;
+    --clr-accent: #1e90ff;
+    --clr-subheading: #73b9ff;
+    --clr-code-bg: #111;
+    --clr-code-text: #34813d;
+*/

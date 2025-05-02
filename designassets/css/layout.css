@@ -1,3 +1,5 @@
+/*  structural layout (grid, sections)  */
+
 h1 {
     text-align: center;
 }
@@ -6,5 +8,22 @@ h1 {
 nav {
     text-align: center;
     margin-bottom: 20px;
+  }
+
+
+  /* --- Gallery grid -------------------------------------------------- */
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-3);
+    margin: var(--space-3) auto;      /* keeps gallery off screen edges */
+    max-width: 96rem;                 /* hard stop for ultra‑wide screens */
+  }
+  
+  /* If you want cards to grow a hair sooner on tablets */
+  @media (max-width: 960px){
+    .gallery{
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
   }
   
