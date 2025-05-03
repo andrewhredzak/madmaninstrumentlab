@@ -27,3 +27,13 @@ nav {
     }
   }
   
+  /* --- copywrite -------------------------------------------------- */
+
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #EDBE47; /* or a direct hex like #888 */
+    background-color: var(--background-footer); /* optional */
+  }
+  
