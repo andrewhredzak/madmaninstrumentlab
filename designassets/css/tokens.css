@@ -3,12 +3,12 @@
 
 
 :root {
-    --clr-bg: #6E6B64;
-    --clr-fg: #fff;
-    --clr-accent: #2C6185;
-    --clr-subheading: #B36700;
+    --clr-bg: #D7D1C2;
+    --clr-fg: #1C2C27;
+    --clr-accent: #055232;
+    --clr-subheading: #2F2A29;
     --clr-code-bg: #7be099;
-    --clr-code-text: #34813d;
+    --clr-code-text: #2F2A29;
   
     
     --font-header: 'Special Gothic Expanded One', sans-serif;
