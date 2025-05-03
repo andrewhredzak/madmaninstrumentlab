@@ -34,8 +34,19 @@
     </p>
     
     <!---- SOFTWARE / SERVICES -->
-    <h2>Software Tools / Utilities / Services</h2>
-    <p><strong>NGINX</strong> list the concepts.</p>
+    <h2>Software Tools/Utilities/Services Concepts Covered</h2>
+    <p>
+        <strong>NGINX</strong> – primary web server handling HTTP(S) requests<br>
+        <strong>Git</strong> – used to pull the latest version of your portfolio from Git<br>
+        <strong>Cloudflare</strong> – DNS management, SSL proxying, and reverse proxy<br>
+        <strong>GitHub</strong> – version control hosting for your portfolio repo<br>
+        <strong>Certbot (pseudo setup)</strong> – attempted or simulated certificate generation and renewal<br>
+        <strong>GNU nano</strong> – command-line text editor used to edit config files like nginx.conf<br>
+        <strong>Bash / Shell scripts</strong> – automating Git pulls to update your site<br>
+        <strong>Squarespace</strong> – where your domain DNS is hosted<br>
+        <strong>Chrome / Safari</strong> – browsers used to test SSL and domain access<br>
+        <strong>Cloudflare Proxy (CDN/SSL mode)</strong> – used to mask your IP and serve traffic securely<br>
+    </p>
     
     <!---- NETWORKING CONCEPTS -->
     <h2>Networking Concepts</h2>
@@ -52,6 +63,9 @@
         <li><strong>TTL</strong> – how long (seconds) resolvers cache the record</li>
         <li><strong>DATA</strong> – IPv4 address returned for the lookup</li>
       </ul>
+
+      <img src="../../designassets/images/webserver/TLD-domain-url1.jpg" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+
     
       <h3>DNS Server Types</h3>
       <ul>
@@ -60,6 +74,9 @@
         <li>TLD name server (<code>.io</code> for me)</li>
         <li>Authoritative name server (Squarespace)</li>
       </ul>
+
+      <img src="../../designassets/images/webserver/staticip.png" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+
     
       <h3>DNS Query Modes</h3>
       <ul>
@@ -130,6 +147,9 @@
         <code>sudo apt update</code><br>
         <code>sudo apt install certbot python3-certbot-nginx -y</code><br>
         <code>sudo certbot --nginx -d www.andrewhredzak.io</code><br>
+
+        <img src="../../designassets/images/webserver/cloudflare.webp" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+
         <br><br>
 
 
@@ -143,6 +163,9 @@
         talking to the right person.
 
     </p>
+    <img src="../../designassets/images/webserver/Diffie-Hellman-Key-exchange-protocol.png" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+    <img src="../../designassets/images/webserver/ssl-phases.png" alt="RAZPI" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+
 
     <h2>Version Automation Control</h2>
 
