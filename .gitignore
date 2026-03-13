@@ -47,6 +47,7 @@ coverage/
 prev_version/
 archive/
 Progress_PICS/
+source_images/
 design_sandbox/
 resources/
 unittests/
