@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MadMadIndustries – iPod</title>
+  <!-- external stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="ipod">
+    <div id="screen">
+      <div id="screen-header">
+        <span id="header-title-text">Music</span> <!-- Wrapper for the title -->
+        <div id="battery-container"> <!-- Container for the battery icon -->
+          <div id="battery-outline">
+            <div id="battery-level-fill"></div>
+          </div>
+        </div>
+      </div>
+      <ul id="list"></ul>
+      <div id="nowplaying">
+        <div id="np-top-section">
+          <img id="np-album-art" src="" alt="Album Art" />
+          <div id="np-text-info">
+            <h3 id="np-title"></h3>
+            <p id="np-artist"></p>
+          </div>
+        </div>
+        <div id="progress-container">
+          <span id="current-time">0:00</span>
+          <div id="progress-bar">
+            <div id="progress-bar-fill"></div>
+          </div>
+          <span id="remaining-time">-0:00</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="wheel">
+      <!-- rotation surface -->
+      <div id="wheel-overlay"></div>
+
+      <!-- labels -->
+      <div id="label-menu" class="label">MENU</div>
+      <div id="label-prev" class="label">&#9664;&#9664;</div>
+      <div id="label-next" class="label">&#9654;&#9654;</div>
+      <div id="label-play" class="label">&#9654;&#10074;&#10074;</div>
+
+      <!-- hot‑zones -->
+      <div id="hot-menu" class="hot"></div>
+      <div id="hot-prev" class="hot"></div>
+      <div id="hot-next" class="hot"></div>
+      <div id="hot-play" class="hot"></div>
+
+      <!-- center button -->
+      <div id="button-center"></div>
+    </div>
+  </div>
+
+  <!-- audio element -->
+  <audio id="audio"></audio>
+
+  <!-- external script -->
+  <script src="js/script.js"></script>
+</body>
+</html>
