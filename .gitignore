@@ -43,7 +43,7 @@ __pycache__/
 coverage/
 
 
-# my folders
+# my folders/files to ignore
 prev_version/
 archive/
 Progress_PICS/
@@ -52,6 +52,7 @@ design_sandbox/
 resources/
 unittests/
 lightsail_connect.ps1
+hearmeoutipod_pull.ps1
 
 
 
