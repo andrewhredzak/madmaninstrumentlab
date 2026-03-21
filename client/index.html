@@ -7,7 +7,14 @@
     <link rel="icon" href="../designassets/icons/snap_favicon_transcrop3.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=IBM+Plex+Mono&family=Source+Code+Pro&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="designassets/css/main.css">
-    
+    <style>
+        .homepage-image {
+            width: 600px;
+            max-width: 100%;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
 </head>
 <body>
     <div class="header-box">
@@ -27,12 +34,30 @@
         MAINTENANCE, IN PROGRESS
     </div>
      -->
-    <img src="designassets/images/homepage/sappyaristotlefinal.png" alt="sappy aristotle" style="width: 600px; max-width: 250%; display: block; margin: 20px auto;">
+    <img class="homepage-image" src="designassets/images/homepage/sappyaristotlefinal.png" alt="sappy aristotle">
 
     <footer>
         <p>&copy; 2026 Andrew Hredzak. All rights reserved.</p>
       </footer>
     </div>
-      
+    <script>
+        const triggerWindowMs = 3000;
+        const requiredPresses = 10;
+        let keypressTimes = [];
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key.toLowerCase() !== "m") {
+                return;
+            }
+
+            const now = Date.now();
+            keypressTimes.push(now);
+            keypressTimes = keypressTimes.filter((time) => now - time <= triggerWindowMs);
+
+            if (keypressTimes.length >= requiredPresses) {
+                window.location.href = "MMI_proto/index.html";
+            }
+        });
+    </script>
 </body>
 </html>

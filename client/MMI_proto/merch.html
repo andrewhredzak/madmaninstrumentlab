@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merch | MADMAN INDUSTRIES</title>
+    <link rel="icon" href="../designassets/icons/snap_favicon_transcrop3.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --panel: rgba(244, 239, 227, 0.82);
+            --panel-soft: rgba(255, 255, 255, 0.26);
+            --text: #2f2420;
+            --muted: rgba(47, 36, 32, 0.78);
+            --line: rgba(47, 36, 32, 0.14);
+            --glow: #d9d4bf;
+            --accent-soft: #5f4f48;
+            --shadow: rgba(32, 23, 18, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: var(--text);
+            font-family: "IBM Plex Mono", monospace;
+            background:
+                linear-gradient(rgba(234, 228, 216, 0.42), rgba(234, 228, 216, 0.42)),
+                url("MMI_designassets/3girlspool.webp") center center / cover fixed no-repeat;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .shell {
+            width: min(1120px, calc(100% - 32px));
+            margin: 20px auto;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--panel);
+            box-shadow: 0 24px 64px var(--shadow);
+            backdrop-filter: blur(2px);
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.4rem;
+            border-bottom: 1px solid var(--line);
+            background: rgba(252, 248, 240, 0.42);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .brand-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background: var(--glow);
+            box-shadow: 0 0 12px rgba(217, 212, 191, 0.42);
+            flex: 0 0 auto;
+        }
+
+        .brand span,
+        .nav a {
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .nav {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: var(--muted);
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav a:hover {
+            color: var(--text);
+            border-color: rgba(47, 36, 32, 0.55);
+        }
+
+        .hero {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 0.75rem;
+            color: var(--accent-soft);
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        h1, h2 {
+            margin: 0;
+            font-family: "Special Gothic Expanded One", sans-serif;
+            letter-spacing: 0.03em;
+        }
+
+        h1 {
+            font-size: clamp(2.1rem, 5vw, 4.2rem);
+            line-height: 0.95;
+        }
+
+        .hero p {
+            max-width: 48rem;
+            margin: 1rem 0 0;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .sticker-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            padding: 1.5rem;
+        }
+
+        .sticker-card,
+        .notes {
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: var(--panel-soft);
+        }
+
+        .sticker-card {
+            padding: 1rem;
+        }
+
+        .sticker-card img {
+            width: 100%;
+            display: block;
+            border-radius: 14px;
+            background: rgba(243, 225, 197, 0.06);
+            margin-bottom: 0.9rem;
+        }
+
+        .sticker-card h2 {
+            margin-bottom: 0.45rem;
+            font-size: 1rem;
+        }
+
+        .sticker-card p,
+        .notes p,
+        .notes li {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 0.94rem;
+        }
+
+        .notes {
+            margin: 0 1.5rem 1.5rem;
+            padding: 1rem 1.1rem;
+        }
+
+        .notes ul {
+            margin: 0.7rem 0 0;
+            padding-left: 1rem;
+        }
+
+        .footer-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.5rem 1.35rem;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 800px) {
+            .sticker-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .shell {
+                width: min(100% - 16px, 1120px);
+                margin: 8px auto;
+                border-radius: 18px;
+            }
+
+            .topbar,
+            .footer-line {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .sticker-grid,
+            .notes {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .notes {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-dot" aria-hidden="true"></span>
+                <span>MADMAN INDUSTRIES / MERCH</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Main</a>
+                <a href="breadboard.html">Breadboard Mock</a>
+                <a href="madmaninstrumentlab.html">MadManInstrumentLab</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <span class="eyebrow">Sticker Mockups</span>
+            <h1>Merch</h1>
+            <p>
+                A streamlined merch page focused on sticker concepts for now. The first two mockups are surfaced directly
+                as product-style cards so the page reads as a real merch section instead of a placeholder.
+            </p>
+        </section>
+
+        <section class="sticker-grid">
+            <article class="sticker-card">
+                <img src="MMI_designassets/czeckmock.png" alt="Czeckmock sticker design">
+                <h2>Czeckmock</h2>
+                <p>
+                    Sticker mockup presented as a first-pass merch graphic inside the MADMAN INDUSTRIES collection.
+                </p>
+            </article>
+
+            <article class="sticker-card">
+                <img src="MMI_designassets/lockedinmock.png" alt="Locked In mock sticker design">
+                <h2>Locked In</h2>
+                <p>
+                    A second sticker concept positioned as part of the same early merch system and visual language.
+                </p>
+            </article>
+        </section>
+
+        <section class="notes">
+            <h2>Current Direction</h2>
+            <p>
+                The merch section is intentionally narrow for now and centered on sticker releases before expanding into shirts,
+                posters, or accessory objects.
+            </p>
+            <ul>
+                <li>Use merch pages as simple campaign surfaces rather than dense storefronts.</li>
+                <li>Keep product focus on one small collection at a time.</li>
+                <li>Expand later if you want pricing, product variants, or checkout-style mockups.</li>
+            </ul>
+        </section>
+
+        <footer class="footer-line">
+            <span>MADMAN INDUSTRIES</span>
+            <span>Sticker Mockups</span>
+        </footer>
+    </main>
+</body>
+</html>
