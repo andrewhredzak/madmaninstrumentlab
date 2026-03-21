@@ -47,10 +47,9 @@ coverage/
 prev_version/
 archive/
 Progress_PICS/
-source_images/
+source_images_local/
 design_sandbox/
-resources/
-unittests/
+resources_local/
 lightsail_connect.ps1
 hearmeoutipod_pull.ps1
 
