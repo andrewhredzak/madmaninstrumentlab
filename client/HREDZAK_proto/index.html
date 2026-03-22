@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hredzak Family Archive Prototype</title>
+    <link rel="icon" href="../designassets/icons/snap_favicon_transcrop3.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=IBM+Plex+Mono&family=Source+Code+Pro&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero-panel">
+            <div class="hero-copy">
+                <p class="eyebrow">Digital Repository Prototype</p>
+                <h1>Hredzak Family Archive</h1>
+                <p class="hero-text">
+                    A basic archive app for family photos, documents, audio records, and shared notes.
+                    This is a static prototype with mock authentication and browser-local message storage.
+                </p>
+            </div>
+            <div class="hero-meta">
+                <div class="meta-card">
+                    <span class="meta-label">Archive Type</span>
+                    <strong>Documents / Images / Media</strong>
+                </div>
+                <div class="meta-card">
+                    <span class="meta-label">Users</span>
+                    <strong>5 Mock Accounts</strong>
+                </div>
+                <div class="meta-card">
+                    <span class="meta-label">Admin Seed</span>
+                    <strong>ahredzak.com</strong>
+                </div>
+            </div>
+        </header>
+
+        <main class="app-grid">
+            <section class="panel auth-panel" id="authPanel">
+                <div class="panel-heading">
+                    <p class="eyebrow">Access</p>
+                    <h2>Mock Login</h2>
+                </div>
+                <form id="loginForm" class="login-form">
+                    <label>
+                        Email
+                        <input id="emailInput" name="email" type="text" value="ahredzak.com" autocomplete="username">
+                    </label>
+                    <label>
+                        Password
+                        <input id="passwordInput" name="password" type="password" value="hredzak" autocomplete="current-password">
+                    </label>
+                    <button type="submit">Enter Archive</button>
+                </form>
+                <p id="loginStatus" class="status-line" aria-live="polite"></p>
+                <div class="seed-card">
+                    <p class="seed-title">Seeded Accounts</p>
+                    <ul id="seededUsersList" class="seed-list"></ul>
+                </div>
+            </section>
+
+            <section class="panel dashboard-panel is-hidden" id="dashboardPanel">
+                <div class="dashboard-bar">
+                    <div>
+                        <p class="eyebrow">Logged In</p>
+                        <h2 id="welcomeLine">Archive Dashboard</h2>
+                    </div>
+                    <div class="session-actions">
+                        <a href="wiki.html" class="secondary-button action-link">Open Wiki</a>
+                        <span class="role-pill" id="rolePill">Member</span>
+                        <button id="logoutButton" type="button" class="secondary-button">Log Out</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid" id="statsGrid"></div>
+
+                <div class="dashboard-columns">
+                    <section class="subpanel">
+                        <div class="subpanel-heading">
+                            <h3>Family Message Board</h3>
+                            <p>Posts are saved locally in this browser.</p>
+                        </div>
+                        <form id="messageForm" class="message-form">
+                            <label>
+                                Subject
+                                <input id="messageTitle" name="title" type="text" maxlength="80" placeholder="Add a title">
+                            </label>
+                            <label>
+                                Message
+                                <textarea id="messageBody" name="body" rows="5" maxlength="600" placeholder="Share context, family history notes, or repository updates."></textarea>
+                            </label>
+                            <button type="submit">Post Message</button>
+                        </form>
+                        <div id="messageBoard" class="message-board"></div>
+                    </section>
+
+                    <section class="subpanel">
+                        <div class="subpanel-heading">
+                            <h3>Repository Sections</h3>
+                            <p>Current prototype inventory pulled from the local asset folder.</p>
+                        </div>
+                        <div id="resourceSections" class="resource-sections"></div>
+                    </section>
+                </div>
+            </section>
+
+            <section class="panel gallery-panel is-hidden" id="galleryPanel">
+                <div class="panel-heading">
+                    <p class="eyebrow">Images</p>
+                    <h2>Family Gallery</h2>
+                </div>
+                <div id="galleryGrid" class="gallery-grid"></div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Hredzak. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <dialog id="lightboxDialog" class="lightbox-dialog">
+        <button id="closeLightbox" class="lightbox-close" type="button" aria-label="Close image viewer">Close</button>
+        <img id="lightboxImage" src="" alt="">
+        <div class="lightbox-caption">
+            <h3 id="lightboxTitle"></h3>
+            <p id="lightboxMeta"></p>
+        </div>
+    </dialog>
+
+    <script src="app.js"></script>
+</body>
+</html>
