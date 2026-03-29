@@ -1,20 +1,5 @@
 const assetBase = document.body.dataset.assetBase || "HREDZAK_designassets";
-
-const galleryItems = [
-    { file: "images/Christmas at Frank_s.webp", title: "Christmas At Frank's", tag: "Gathering" },
-    { file: "images/christmasatfranks_color.webp", title: "Frank's In Color", tag: "Color Restoration" },
-    { file: "images/Copy of Old Country.webp", title: "Old Country Copy", tag: "Heritage" },
-    { file: "images/Front of Krcma.webp", title: "Front Of Krcma", tag: "Location" },
-    { file: "images/generation-3c0d6270-7582-4f7b-ada0-db57167a3750.webp", title: "Generation Portrait", tag: "Family Line" },
-    { file: "images/Happy Trio.webp", title: "Happy Trio", tag: "Portrait" },
-    { file: "images/Hredzak_beerlabel.webp", title: "Hredzak Beer Label", tag: "Artifact" },
-    { file: "images/Igercich Headstone 2.webp", title: "Igercich Headstone", tag: "Record" },
-    { file: "images/Inside Krcma.webp", title: "Inside Krcma", tag: "Interior" },
-    { file: "images/insideKrcma_color.webp", title: "Inside Krcma In Color", tag: "Color Restoration" },
-    { file: "images/Krcma Christmas.webp", title: "Krcma Christmas", tag: "Holiday" },
-    { file: "images/Krcma.webp", title: "Krcma", tag: "Location" },
-    { file: "images/Old Country.webp", title: "Old Country", tag: "Heritage" }
-];
+let galleryItems = [];
 
 const resourceSections = [
     {
@@ -61,6 +46,14 @@ const closeLightbox = document.getElementById("closeLightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxTitle = document.getElementById("lightboxTitle");
 const lightboxMeta = document.getElementById("lightboxMeta");
+
+function getGalleryManifestUrl() {
+    if (!galleryGrid) {
+        return null;
+    }
+
+    return galleryGrid.dataset.galleryManifest || "gallery.json";
+}
 
 function buildAssetPath(file) {
     return `${assetBase}/${file.split("/").map((segment) => encodeURIComponent(segment)).join("/")}`;
@@ -164,6 +157,38 @@ function renderGallery() {
     });
 }
 
+async function loadGallery() {
+    if (!galleryGrid) {
+        return;
+    }
+
+    const manifestUrl = getGalleryManifestUrl();
+    if (!manifestUrl) {
+        galleryGrid.innerHTML = `<div class="empty-state">Gallery manifest is not configured.</div>`;
+        return;
+    }
+
+    try {
+        const response = await fetch(manifestUrl);
+        if (!response.ok) {
+            throw new Error(`Failed to load gallery manifest: ${response.status}`);
+        }
+
+        const items = await response.json();
+        galleryItems = Array.isArray(items) ? items : [];
+
+        if (!galleryItems.length) {
+            galleryGrid.innerHTML = `<div class="empty-state">No gallery images loaded yet.</div>`;
+            return;
+        }
+
+        renderGallery();
+    } catch (error) {
+        console.error(error);
+        galleryGrid.innerHTML = `<div class="empty-state">Unable to load gallery images.</div>`;
+    }
+}
+
 function renderMessages() {
     if (!messageBoard) {
         return;
@@ -234,5 +259,5 @@ if (closeLightbox && lightboxDialog) {
 }
 
 renderResources();
-renderGallery();
+loadGallery();
 renderMessages();
