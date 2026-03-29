@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hredzak Wiki Family Tree</title>
+    <link rel="icon" href="../../../../designassets/icons/snap_favicon_transcrop3.png" type="image/png">
+    <link rel="stylesheet" href="../../../styles.css">
+</head>
+<body data-asset-base="../../../HREDZAK_designassets">
+    <div class="page-shell">
+        <header class="hero-panel">
+            <p class="eyebrow">Wiki</p>
+            <h1>Family Tree</h1>
+            <p>Interactive family-member graph based on <code>familymembers.md</code>.</p>
+        </header>
+
+        <nav class="session-actions top-links" aria-label="Page links">
+            <a href="../../wiki.html" class="action-link">Wiki Home</a>
+            <a href="../documents/documents.html" class="action-link">Documents</a>
+            <a href="../family%20history/family-history.html" class="action-link">Family History</a>
+        </nav>
+
+        <main class="app-grid">
+            <section class="panel">
+                <div class="panel-heading">
+                    <h2>Family Member Graph</h2>
+                    <p>Click a node to focus it. Use the controls or mouse wheel to zoom, and drag to pan.</p>
+                </div>
+
+                <div class="tree-tools" aria-label="Tree controls">
+                    <button id="zoomInButton" type="button">Zoom In</button>
+                    <button id="zoomOutButton" type="button">Zoom Out</button>
+                    <button id="resetViewButton" type="button">Reset View</button>
+                </div>
+
+                <div class="tree-stage">
+                    <svg id="treeSvg" class="tree-svg" viewBox="0 0 1200 800" role="img" aria-label="Interactive family tree graph">
+                        <g id="treeViewport"></g>
+                    </svg>
+                </div>
+
+                <p class="tree-help">
+                    The links are a working graph based on named family members in the markdown file and should be treated as provisional.
+                </p>
+
+                <div class="tree-info" id="treeInfo" aria-live="polite">
+                    <p><strong>Selected Node:</strong> <span id="selectedNodeName">Hredzak Family</span></p>
+                    <p id="selectedNodeMeta">Central family graph. Connections are based on the current member list and working relationship groupings.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Hredzak. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const membersFile = "../../../HREDZAK_designassets/familymembers/familymembers.md";
+        const fallbackMembers = [
+            "Grammy / grandmother",
+            "Granddad / grandfather",
+            "Mary",
+            "Joe",
+            "Jake / Jacob",
+            "Lynn",
+            "Mark",
+            "John",
+            "Andrew",
+            "Noah",
+            "Timmy Garza"
+        ];
+
+        const treeSvg = document.getElementById("treeSvg");
+        const treeViewport = document.getElementById("treeViewport");
+        const selectedNodeName = document.getElementById("selectedNodeName");
+        const selectedNodeMeta = document.getElementById("selectedNodeMeta");
+        const zoomInButton = document.getElementById("zoomInButton");
+        const zoomOutButton = document.getElementById("zoomOutButton");
+        const resetViewButton = document.getElementById("resetViewButton");
+
+        const state = {
+            scale: 1,
+            translateX: 0,
+            translateY: 0,
+            isDragging: false,
+            dragStartX: 0,
+            dragStartY: 0,
+            activeId: "family-root"
+        };
+
+        const graphInfo = {
+            "family-root": "Central family graph. Connections are based on the current member list and working relationship groupings.",
+            "Grammy / grandmother": "Older generation anchor in the family history notes.",
+            "Granddad / grandfather": "Older generation anchor paired with Grammy in the family history notes.",
+            "Mary": "Present-day anchor in the family history notes and Arizona move timeline.",
+            "Joe": "Referenced through childhood and health stories.",
+            "Jake / Jacob": "Referenced in childhood memory stories.",
+            "Lynn": "Named in the family-member list drawn from the history notes.",
+            "Mark": "Named in the family-member list drawn from the history notes.",
+            "John": "Named in the family-member list drawn from the history notes.",
+            "Andrew": "Named in the family-member list drawn from the history notes.",
+            "Noah": "Named in the family-member list drawn from the history notes.",
+            "Timmy Garza": "Named in the family-member list drawn from the history notes."
+        };
+
+        function parseMembers(markdownText) {
+            return markdownText
+                .split(/\r?\n/)
+                .map((line) => line.trim())
+                .filter((line) => line.startsWith("- "))
+                .map((line) => line.slice(2).trim())
+                .filter(Boolean);
+        }
+
+        async function loadMembers() {
+            try {
+                const response = await fetch(membersFile);
+                if (!response.ok) {
+                    throw new Error("fetch failed");
+                }
+
+                const text = await response.text();
+                const parsed = parseMembers(text);
+                return parsed.length ? parsed : fallbackMembers;
+            } catch (error) {
+                return fallbackMembers;
+            }
+        }
+
+        function buildGraph(memberNames) {
+            const root = {
+                id: "family-root",
+                label: "Hredzak Family",
+                x: 600,
+                y: 400,
+                radius: 22,
+                root: true
+            };
+
+            const nodeLayout = [
+                { x: 600, y: 145 },
+                { x: 760, y: 185 },
+                { x: 895, y: 305 },
+                { x: 940, y: 470 },
+                { x: 835, y: 625 },
+                { x: 645, y: 690 },
+                { x: 445, y: 675 },
+                { x: 285, y: 585 },
+                { x: 195, y: 415 },
+                { x: 245, y: 235 },
+                { x: 410, y: 145 }
+            ];
+
+            const nodes = memberNames.map((name, index) => ({
+                id: name,
+                label: name,
+                x: (nodeLayout[index] || { x: 180 + (index * 70), y: 180 + ((index % 5) * 80) }).x,
+                y: (nodeLayout[index] || { x: 180 + (index * 70), y: 180 + ((index % 5) * 80) }).y,
+                radius: 14
+            }));
+
+            const links = nodes.map((node) => ({
+                source: root.id,
+                target: node.id
+            }));
+
+            const byName = new Set(memberNames);
+            const extraPairs = [
+                ["Grammy / grandmother", "Granddad / grandfather"],
+                ["Grammy / grandmother", "Mary"],
+                ["Grammy / grandmother", "Joe"],
+                ["Grammy / grandmother", "Lynn"],
+                ["Granddad / grandfather", "Mary"],
+                ["Granddad / grandfather", "Joe"],
+                ["Mary", "Andrew"],
+                ["Mary", "Noah"],
+                ["Joe", "Jake / Jacob"],
+                ["Mark", "John"],
+                ["John", "Andrew"],
+                ["Jake / Jacob", "Noah"],
+                ["Joe", "Timmy Garza"]
+            ];
+
+            extraPairs.forEach(([source, target]) => {
+                if (byName.has(source) && byName.has(target)) {
+                    links.push({ source, target });
+                }
+            });
+
+            return {
+                nodes: [root, ...nodes],
+                links
+            };
+        }
+
+        function applyTransform() {
+            treeViewport.setAttribute(
+                "transform",
+                `translate(${state.translateX} ${state.translateY}) scale(${state.scale})`
+            );
+        }
+
+        function clampScale(nextScale) {
+            return Math.min(2.6, Math.max(0.45, nextScale));
+        }
+
+        function setScale(nextScale) {
+            state.scale = clampScale(nextScale);
+            applyTransform();
+        }
+
+        function zoomBy(step) {
+            setScale(state.scale + step);
+        }
+
+        function resetView() {
+            state.scale = 1;
+            state.translateX = 0;
+            state.translateY = 0;
+            applyTransform();
+        }
+
+        function updateActiveNode(graph, nodeId) {
+            state.activeId = nodeId;
+            const activeNode = graph.nodes.find((node) => node.id === nodeId);
+            if (!activeNode) {
+                return;
+            }
+
+            selectedNodeName.textContent = activeNode.label;
+            selectedNodeMeta.textContent = graphInfo[activeNode.id] || "Family member node from familymembers.md.";
+
+            const connectedIds = new Set([activeNode.id]);
+            graph.links.forEach((link) => {
+                if (link.source === activeNode.id) {
+                    connectedIds.add(link.target);
+                }
+                if (link.target === activeNode.id) {
+                    connectedIds.add(link.source);
+                }
+            });
+
+            treeViewport.querySelectorAll(".tree-node").forEach((nodeEl) => {
+                const nodeKey = nodeEl.dataset.nodeId;
+                nodeEl.classList.toggle("is-active", nodeKey === activeNode.id);
+                nodeEl.classList.toggle("is-muted", !connectedIds.has(nodeKey));
+            });
+
+            treeViewport.querySelectorAll(".tree-link").forEach((linkEl) => {
+                const isConnected =
+                    linkEl.dataset.source === activeNode.id ||
+                    linkEl.dataset.target === activeNode.id;
+                linkEl.style.opacity = isConnected ? "1" : "0.18";
+            });
+        }
+
+        function renderGraph(graph) {
+            treeViewport.innerHTML = "";
+
+            const ns = "http://www.w3.org/2000/svg";
+            const nodeMap = new Map(graph.nodes.map((node) => [node.id, node]));
+
+            graph.links.forEach((link) => {
+                const source = nodeMap.get(link.source);
+                const target = nodeMap.get(link.target);
+                if (!source || !target) {
+                    return;
+                }
+
+                const line = document.createElementNS(ns, "line");
+                line.setAttribute("x1", source.x);
+                line.setAttribute("y1", source.y);
+                line.setAttribute("x2", target.x);
+                line.setAttribute("y2", target.y);
+                line.setAttribute("class", "tree-link");
+                line.dataset.source = link.source;
+                line.dataset.target = link.target;
+                treeViewport.appendChild(line);
+            });
+
+            graph.nodes.forEach((node) => {
+                const group = document.createElementNS(ns, "g");
+                group.setAttribute("class", `tree-node${node.root ? " is-root" : ""}`);
+                group.dataset.nodeId = node.id;
+                group.setAttribute("tabindex", "0");
+                group.style.cursor = "pointer";
+
+                const circle = document.createElementNS(ns, "circle");
+                circle.setAttribute("cx", node.x);
+                circle.setAttribute("cy", node.y);
+                circle.setAttribute("r", node.radius);
+
+                const text = document.createElementNS(ns, "text");
+                text.setAttribute("x", node.x + node.radius + 10);
+                text.setAttribute("y", node.y + 6);
+                text.textContent = node.label;
+
+                group.appendChild(circle);
+                group.appendChild(text);
+
+                group.addEventListener("click", () => updateActiveNode(graph, node.id));
+                group.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        updateActiveNode(graph, node.id);
+                    }
+                });
+
+                treeViewport.appendChild(group);
+            });
+
+            updateActiveNode(graph, state.activeId);
+            applyTransform();
+        }
+
+        function initPanAndZoom() {
+            treeSvg.addEventListener("wheel", (event) => {
+                event.preventDefault();
+                const delta = event.deltaY > 0 ? -0.08 : 0.08;
+                zoomBy(delta);
+            });
+
+            treeSvg.addEventListener("pointerdown", (event) => {
+                state.isDragging = true;
+                state.dragStartX = event.clientX - state.translateX;
+                state.dragStartY = event.clientY - state.translateY;
+                treeSvg.classList.add("is-dragging");
+            });
+
+            window.addEventListener("pointermove", (event) => {
+                if (!state.isDragging) {
+                    return;
+                }
+
+                state.translateX = event.clientX - state.dragStartX;
+                state.translateY = event.clientY - state.dragStartY;
+                applyTransform();
+            });
+
+            window.addEventListener("pointerup", () => {
+                state.isDragging = false;
+                treeSvg.classList.remove("is-dragging");
+            });
+
+            zoomInButton.addEventListener("click", () => zoomBy(0.15));
+            zoomOutButton.addEventListener("click", () => zoomBy(-0.15));
+            resetViewButton.addEventListener("click", resetView);
+        }
+
+        loadMembers().then((members) => {
+            const graph = buildGraph(members);
+            renderGraph(graph);
+            initPanAndZoom();
+        });
+    </script>
+</body>
+</html>

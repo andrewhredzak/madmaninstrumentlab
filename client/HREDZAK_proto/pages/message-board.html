@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hredzak Message Board</title>
+    <link rel="icon" href="../../designassets/icons/snap_favicon_transcrop3.png" type="image/png">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-asset-base="../HREDZAK_designassets">
+    <div class="page-shell">
+        <header class="hero-panel">
+            <p class="eyebrow">Message Board</p>
+            <h1>Shared Family Notes</h1>
+            <p>Post simple browser-local notes for the archive.</p>
+        </header>
+
+        <nav class="session-actions top-links" aria-label="Page links">
+            <a href="../index.html" class="action-link">Home</a>
+            <a href="wiki.html" class="action-link">Wiki</a>
+            <a href="images.html" class="action-link">Images</a>
+        </nav>
+
+        <main class="app-grid">
+            <section class="panel">
+                <div class="panel-heading">
+                    <h2>Post A Message</h2>
+                </div>
+                <form id="messageForm" class="message-form">
+                    <label>
+                        Name
+                        <input id="messageAuthor" name="author" type="text" maxlength="60" placeholder="Your name">
+                    </label>
+                    <label>
+                        Subject
+                        <input id="messageTitle" name="title" type="text" maxlength="80" placeholder="Message subject">
+                    </label>
+                    <label>
+                        Message
+                        <textarea id="messageBody" name="body" rows="5" maxlength="600" placeholder="Share an update, question, or archive note."></textarea>
+                    </label>
+                    <button type="submit">Post Message</button>
+                </form>
+            </section>
+
+            <section class="panel">
+                <div class="panel-heading">
+                    <h2>Recent Messages</h2>
+                </div>
+                <div id="messageBoard" class="message-board"></div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Hredzak. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="../app.js"></script>
+</body>
+</html>

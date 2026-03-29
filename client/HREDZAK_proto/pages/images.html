@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hredzak Images</title>
+    <link rel="icon" href="../../designassets/icons/snap_favicon_transcrop3.png" type="image/png">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-asset-base="../HREDZAK_designassets">
+    <div class="page-shell">
+        <header class="hero-panel">
+            <p class="eyebrow">Images</p>
+            <h1>Family Gallery</h1>
+            <p>Scrollable image wall for the archive photos.</p>
+        </header>
+
+        <nav class="session-actions top-links" aria-label="Page links">
+            <a href="../index.html" class="action-link">Home</a>
+            <a href="wiki.html" class="action-link">Wiki</a>
+            <a href="message-board.html" class="action-link">Message Board</a>
+        </nav>
+
+        <main class="app-grid">
+            <section class="panel">
+                <div class="panel-heading">
+                    <h2>Gallery</h2>
+                </div>
+                <div id="galleryGrid" class="gallery-grid gallery-wall"></div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Hredzak. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <dialog id="lightboxDialog" class="lightbox-dialog">
+        <button id="closeLightbox" class="lightbox-close" type="button" aria-label="Close image viewer">Close</button>
+        <img id="lightboxImage" src="" alt="">
+        <div class="lightbox-caption">
+            <h3 id="lightboxTitle"></h3>
+            <p id="lightboxMeta"></p>
+        </div>
+    </dialog>
+
+    <script src="../app.js"></script>
+</body>
+</html>
