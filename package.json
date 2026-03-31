@@ -1,23 +1,16 @@
 {
-  "name": "portfolio",
+  "name": "madmaninstrumentlab",
   "version": "1.0.0",
-  "description": "This is the source code and structure for my personal portfolio website, showcasing hardware projects, embedded systems work, and technical documentation.",
-  "main": "index.js",
+  "description": "MADMAN INDUSTRIES static web app and landing experience.",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andrewhredzak/portfolio.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/andrewhredzak/portfolio/issues"
-  },
-  "homepage": "https://github.com/andrewhredzak/portfolio#readme",
   "dependencies": {
     "express": "^5.2.1"
   }
