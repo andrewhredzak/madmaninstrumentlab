@@ -1,22 +1,16 @@
-# Andrew Hredzak — Engineering Portfolio
+# MADMAN INDUSTRIES Client
 
-This is the source code and structure for my personal portfolio website, showcasing hardware projects, embedded systems work, and technical documentation.
+This directory now contains the MADMAN INDUSTRIES static app. The old portfolio pages and project subsite were removed during the MMI promotion refactor.
 
-## 📁 Project Structure
+## Structure
 
-```bash
-/                   # Root directory
-├── index.html      # Homepage
-├── projects/
-│   ├── naturescanner.html  # Detailed writeup for a custom sensing device
-│   ├── aspenbass.html      # Documentation of a P-Bass guitar restoration 
-│   ├── webserver.html      # pi webserver description and notes
-├── css/
-│   ├── main.css         # Master stylesheet importing modules
-│   ├── tokens.css       # CSS custom properties (colors, spacing)
-│   ├── base.css         # Global resets and base typography
-│   ├── layout.css       # Grid and layout classes
-│   ├── components.css   # Modular components like tables, lightbox, buttons
-│   └── utilities.css    # Reusable utility classes
-└── designassets/        # Images, icons, PDFs, etc.
-└── design_sandbox/        # design ideas
+```text
+client/
+├── index.html                  # Landing page and main MMI index
+├── breadboard.html             # Breadboard mock product page
+├── dblockdevelopment.html      # DBlock placeholder page
+├── madmaninstrumentlab.html    # Applications summary page
+├── merch.html                  # Merch mockups
+├── sensingdata.html            # Sensing data visual page
+└── MMI_designassets/           # Images, audio, and favicon used by the app
+```
