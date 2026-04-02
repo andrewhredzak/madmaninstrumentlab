@@ -255,6 +255,35 @@ img {
     max-width: 42rem;
 }
 
+.site-landing .hero {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    align-items: start;
+}
+
+.site-landing .hero-copy {
+    max-width: 46rem;
+}
+
+.site-landing .hero-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    gap: 1rem;
+    width: min(100%, 36rem);
+}
+
+.site-landing .hero-media .legend-box {
+    width: 100%;
+    margin: 0;
+}
+
+.site-landing .hero-media .photo-panel {
+    width: 100%;
+    margin: 0;
+}
+
 .eyebrow,
 .section-label,
 .legend-title,
@@ -663,6 +692,11 @@ h1 {
 
     .photo-panel {
         width: min(100%, 360px);
+    }
+
+    .site-landing .hero-media .photo-panel {
+        width: 100%;
+        max-width: none;
     }
 }
 
