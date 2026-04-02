@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | MadManInstrumentLab</title>
+    <link rel="icon" href="MMI_designassets/snap_favicon_transcrop3.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-top: #173240;
+            --bg-bottom: #4b7a84;
+            --panel: rgba(232, 246, 247, 0.95);
+            --panel-soft: rgba(255, 255, 255, 0.08);
+            --text: #10222b;
+            --muted: rgba(16, 34, 43, 0.76);
+            --line: rgba(16, 34, 43, 0.2);
+            --accent: #8ff0ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--text);
+            font-family: "IBM Plex Mono", monospace;
+            background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .shell {
+            width: min(1160px, calc(100% - 32px));
+            margin: 20px auto;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            overflow: hidden;
+        }
+
+        .topbar,
+        .footer-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.4rem;
+        }
+
+        .topbar {
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .brand,
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .brand-mark {
+            width: 12px;
+            height: 12px;
+            border-radius: 0;
+            background: var(--accent);
+        }
+
+        .brand span,
+        .nav a,
+        .eyebrow,
+        .tier,
+        .footer-line {
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .nav a {
+            color: var(--muted);
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav a:hover {
+            color: var(--text);
+            border-color: currentColor;
+        }
+
+        .hero {
+            padding: 1.6rem 1.5rem 1.3rem;
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .eyebrow,
+        .tier {
+            display: inline-block;
+            color: var(--muted);
+        }
+
+        h1,
+        h2 {
+            margin: 0;
+            font-family: "Special Gothic Expanded One", sans-serif;
+            letter-spacing: 0.03em;
+        }
+
+        h1 {
+            margin-top: 0.7rem;
+            font-size: clamp(2.2rem, 5vw, 4.8rem);
+            line-height: 0.94;
+        }
+
+        .hero p,
+        .product-card p,
+        .release-card p {
+            margin: 0.85rem 0 0;
+            color: var(--muted);
+            line-height: 1.75;
+            font-size: 0.94rem;
+        }
+
+        .product-grid,
+        .release-grid {
+            display: grid;
+            gap: 1rem;
+            padding: 1.5rem;
+        }
+
+        .product-grid {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .release-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            padding-top: 0;
+        }
+
+        .product-card,
+        .release-card {
+            border: 1px solid var(--line);
+            border-radius: 0;
+            background: transparent;
+            padding: 1rem;
+        }
+
+        .product-card h2,
+        .release-card h2 {
+            margin-top: 0.65rem;
+            font-size: 1.06rem;
+        }
+
+        .footer-line {
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+        }
+
+        @media (max-width: 860px) {
+            .release-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .shell {
+                width: min(100% - 16px, 1160px);
+                margin: 8px auto;
+            }
+
+            .topbar,
+            .footer-line {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .product-grid,
+            .release-grid {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>MADMAN INDUSTRIES / PRODUCTS</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Main</a>
+                <a href="madmaninstrumentlab-hub.html">InstrumentLab Hub</a>
+                <a href="madmaninstrumentlab-documents.html">Documents</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <span class="eyebrow">Concept Shelf</span>
+            <h1>Products</h1>
+            <p>
+                A mock products lane for MadManInstrumentLab, focused on concept framing rather than storefront polish.
+                These cards are meant to read like active development tracks.
+            </p>
+        </section>
+
+        <section class="product-grid">
+            <article class="product-card">
+                <span class="tier">Prototype</span>
+                <h2>Bench Isolator Kit</h2>
+                <p>
+                    A service-bench support kit for cleaner troubleshooting sessions, designed around power stability and fast swap-in use.
+                </p>
+            </article>
+
+            <article class="product-card">
+                <span class="tier">Concept</span>
+                <h2>Field Recorder Cart</h2>
+                <p>
+                    Mobile capture station for temporary installs, live listening sessions, and compact multi-source routing.
+                </p>
+            </article>
+
+            <article class="product-card">
+                <span class="tier">Pilot</span>
+                <h2>Head Mount Webcam Rig</h2>
+                <p>
+                    A lightweight visual rig for overhead demos, repair documentation, and workshop broadcast angles.
+                </p>
+            </article>
+        </section>
+
+        <section class="release-grid">
+            <article class="release-card">
+                <span class="tier">Release Tier</span>
+                <h2>Lab Utility</h2>
+                <p>Small tools and kits built to improve the working environment before becoming standalone products.</p>
+            </article>
+
+            <article class="release-card">
+                <span class="tier">Release Tier</span>
+                <h2>Audience Facing</h2>
+                <p>Products that can function in demos, events, or public sales once the internal workflow stabilizes.</p>
+            </article>
+
+            <article class="release-card">
+                <span class="tier">Release Tier</span>
+                <h2>Edition Run</h2>
+                <p>Short-run objects with tighter visual packaging and a stronger crossover into merch or event campaigns.</p>
+            </article>
+        </section>
+
+        <footer class="footer-line">
+            <span>MADMAN INDUSTRIES</span>
+            <span>Products</span>
+        </footer>
+    </main>
+</body>
+</html>

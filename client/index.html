@@ -17,6 +17,8 @@
             --ink-strong: #5a0f21;
             --link: #5d1723;
             --link-hover: #8f102a;
+            --link-accent: #39ff6b;
+            --link-accent-hover: #7dff9b;
             --note: rgba(38, 19, 20, 0.78);
         }
 
@@ -163,6 +165,17 @@
             color: var(--link-hover);
         }
 
+        nav a.nav-featured {
+            color: var(--link-accent);
+            font-size: 1.04rem;
+            text-transform: none;
+            text-shadow: 0 0 12px rgba(57, 255, 107, 0.28);
+        }
+
+        nav a.nav-featured:hover {
+            color: var(--link-accent-hover);
+        }
+
         .mmi-subtitle,
         .mmi-note,
         footer {
@@ -292,7 +305,7 @@
 
         <nav>
             <a href="breadboard.html">Breadboard Mock</a>
-            <a href="madmaninstrumentlab.html">Applications Summary</a>
+            <a class="nav-featured" href="madmaninstrumentlab-hub.html">MadManInstrumentLab</a>
             <a href="sensingdata.html">Sensing Data</a>
             <a href="dblockdevelopment.html">DBlock Development</a>
             <a href="merch.html">Merch</a>
@@ -313,7 +326,6 @@
             <a class="mmi-head-link" href="#" style="--x: 89%; --y: 16%;">HeadMountWebcam</a>
 
             <a class="mmi-head-link" href="#" style="--x: 62%; --y: 43%;">Lasersketch</a>
-            <a class="mmi-head-link" href="madmaninstrumentlab.html" style="--x: 53%; --y: 49%;">MadManInstrumentLab &#9733; &#9733;</a>
             <a class="mmi-head-link" href="#" style="--x: 41%; --y: 55%;">MadManStudios</a>
             <a class="mmi-head-link" href="#" style="--x: 30%; --y: 57%;">MechanicalSwitchPiece</a>
             <a class="mmi-head-link" href="merch.html" style="--x: 17%; --y: 61%;">Merch</a>
