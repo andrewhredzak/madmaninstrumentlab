@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensing Data | MADMAN INDUSTRIES</title>
+    <link rel="icon" href="MMI_designassets/snap_favicon_transcrop3.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f4f1e7;
+            --panel: rgba(255, 255, 255, 0.82);
+            --line: rgba(30, 30, 30, 0.12);
+            --text: #171717;
+            --muted: rgba(23, 23, 23, 0.72);
+            --shadow: rgba(27, 27, 27, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--text);
+            font-family: "IBM Plex Mono", monospace;
+            background:
+                radial-gradient(circle at top right, rgba(201, 160, 98, 0.28), transparent 22%),
+                linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .shell {
+            width: min(1120px, calc(100% - 32px));
+            margin: 20px auto;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--panel);
+            box-shadow: 0 24px 64px var(--shadow);
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.4rem;
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        .brand,
+        .nav {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            align-items: center;
+        }
+
+        .brand-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background: #dbb357;
+            box-shadow: 0 0 18px rgba(219, 179, 87, 0.4);
+        }
+
+        .brand span,
+        .nav a,
+        .eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .nav a {
+            color: var(--muted);
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav a:hover {
+            color: var(--text);
+            border-color: var(--text);
+        }
+
+        .content {
+            display: grid;
+            gap: 1.25rem;
+            padding: 1.5rem;
+        }
+
+        .eyebrow {
+            color: rgba(23, 23, 23, 0.54);
+        }
+
+        h1 {
+            margin: 0.4rem 0 0;
+            font-family: "Special Gothic Expanded One", sans-serif;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            line-height: 0.94;
+        }
+
+        p {
+            margin: 0;
+            max-width: 48rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .image-frame {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.66);
+        }
+
+        .image-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 680px) {
+            .shell {
+                width: min(100% - 16px, 1120px);
+                margin: 8px auto;
+                border-radius: 18px;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-dot" aria-hidden="true"></span>
+                <span>MADMAN INDUSTRIES / SENSING DATA</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Main</a>
+                <a href="madmaninstrumentlab.html">Applications Summary</a>
+                <a href="breadboard.html">Breadboard Mock</a>
+            </nav>
+        </header>
+
+        <section class="content">
+            <div>
+                <span class="eyebrow">Nature Scanner Palette</span>
+                <h1>Sensing Data</h1>
+            </div>
+            <p>
+                Early visual material for the sensing-data side of the MADMAN INDUSTRIES stack. This page stays intentionally
+                sparse so the palette study remains the primary object.
+            </p>
+            <div class="image-frame">
+                <img src="MMI_designassets/NSpallet.png" alt="Nature Scanner palette board and sensing-data visual reference">
+            </div>
+        </section>
+    </main>
+</body>
+</html>

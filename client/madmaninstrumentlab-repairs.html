@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repairs | MadManInstrumentLab</title>
+    <link rel="icon" href="MMI_designassets/snap_favicon_transcrop3.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-top: #351e18;
+            --bg-bottom: #8c5a47;
+            --panel: rgba(248, 235, 226, 0.95);
+            --panel-soft: rgba(255, 255, 255, 0.08);
+            --text: #26140f;
+            --muted: rgba(38, 20, 15, 0.74);
+            --line: rgba(38, 20, 15, 0.2);
+            --accent: #ff8552;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--text);
+            font-family: "IBM Plex Mono", monospace;
+            background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .shell {
+            width: min(1160px, calc(100% - 32px));
+            margin: 20px auto;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            overflow: hidden;
+        }
+
+        .topbar,
+        .footer-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.4rem;
+        }
+
+        .topbar {
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .brand,
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .brand-mark {
+            width: 12px;
+            height: 12px;
+            border-radius: 0;
+            background: var(--accent);
+        }
+
+        .brand span,
+        .nav a,
+        .eyebrow,
+        .status-pill,
+        .footer-line {
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .nav a {
+            color: var(--muted);
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav a:hover {
+            color: var(--text);
+            border-color: currentColor;
+        }
+
+        .hero {
+            padding: 1.6rem 1.5rem 1.3rem;
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .eyebrow,
+        .status-pill {
+            display: inline-block;
+            color: var(--muted);
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+            font-family: "Special Gothic Expanded One", sans-serif;
+            letter-spacing: 0.03em;
+        }
+
+        h1 {
+            margin-top: 0.7rem;
+            font-size: clamp(2.2rem, 5vw, 4.7rem);
+            line-height: 0.94;
+        }
+
+        .hero p,
+        .job-card p,
+        .workflow-card p,
+        .metrics p {
+            margin: 0.85rem 0 0;
+            color: var(--muted);
+            line-height: 1.75;
+            font-size: 0.94rem;
+        }
+
+        .queue-grid,
+        .workflow-grid {
+            display: grid;
+            gap: 1rem;
+            padding: 1.5rem;
+        }
+
+        .queue-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .workflow-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            padding-top: 0;
+        }
+
+        .job-card,
+        .workflow-card,
+        .metrics {
+            border: 1px solid var(--line);
+            border-radius: 0;
+            background: transparent;
+        }
+
+        .job-card,
+        .workflow-card,
+        .metrics {
+            padding: 1rem;
+        }
+
+        .job-card h2,
+        .workflow-card h2 {
+            margin-top: 0.65rem;
+            font-size: 1.05rem;
+        }
+
+        .metrics-wrap {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .metric-value {
+            display: block;
+            margin-top: 0.4rem;
+            font-family: "Special Gothic Expanded One", sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.03em;
+        }
+
+        .footer-line {
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+        }
+
+        @media (max-width: 860px) {
+            .workflow-grid,
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .shell {
+                width: min(100% - 16px, 1160px);
+                margin: 8px auto;
+            }
+
+            .topbar,
+            .footer-line {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .queue-grid,
+            .workflow-grid,
+            .metrics-wrap {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>MADMAN INDUSTRIES / REPAIRS</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Main</a>
+                <a href="madmaninstrumentlab-hub.html">InstrumentLab Hub</a>
+                <a href="madmaninstrumentlab-documents.html">Documents</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <span class="eyebrow">Bench Queue</span>
+            <h1>Repairs</h1>
+            <p>
+                A mock repair intake page for MadManInstrumentLab, organized like a real service board with bench status,
+                turnaround markers, and parts-hold visibility.
+            </p>
+        </section>
+
+        <section class="queue-grid">
+            <article class="job-card">
+                <span class="status-pill">Checked In</span>
+                <h2>Tape Echo Motor Drift</h2>
+                <p>Unit flagged for unstable speed after thirty minutes. Diagnostic photos and belt measurements pending.</p>
+            </article>
+
+            <article class="job-card">
+                <span class="status-pill">On Bench</span>
+                <h2>Tube Preamp Hum Sweep</h2>
+                <p>Noise floor issue isolated to power section. Re-cap decision waiting on voltage verification pass.</p>
+            </article>
+
+            <article class="job-card">
+                <span class="status-pill">Parts Hold</span>
+                <h2>Compressor Meter Window</h2>
+                <p>Replacement lens and lamp assembly requested. Cabinet cleanup can continue while parts are in transit.</p>
+            </article>
+
+            <article class="job-card">
+                <span class="status-pill">Ready For Return</span>
+                <h2>Pedalboard Patch Recovery</h2>
+                <p>Signal chain restored and stress-tested. Return notes drafted with recommended cable-map revision.</p>
+            </article>
+        </section>
+
+        <section class="workflow-grid">
+            <article class="workflow-card">
+                <span class="status-pill">Stage 01</span>
+                <h2>Intake</h2>
+                <p>Record symptoms, note damage, capture reference images, and assign a bench priority before teardown.</p>
+            </article>
+
+            <article class="workflow-card">
+                <span class="status-pill">Stage 02</span>
+                <h2>Bench Work</h2>
+                <p>Run fault isolation, trace signal loss, confirm parts availability, and log the fix path in plain language.</p>
+            </article>
+
+            <article class="workflow-card">
+                <span class="status-pill">Stage 03</span>
+                <h2>Return</h2>
+                <p>Document the completed work, note any remaining watch items, and prepare the unit for pickup or shipment.</p>
+            </article>
+        </section>
+
+        <section class="metrics-wrap">
+            <article class="metrics">
+                <div>
+                    <span class="status-pill">Average Queue</span>
+                    <span class="metric-value">6 Jobs</span>
+                    <p>Mock workload kept intentionally compact for a boutique bench schedule.</p>
+                </div>
+                <div>
+                    <span class="status-pill">Bench Window</span>
+                    <span class="metric-value">4 Days</span>
+                    <p>Typical turnaround target for routine service without unusual part delays.</p>
+                </div>
+                <div>
+                    <span class="status-pill">Rush Slots</span>
+                    <span class="metric-value">2 / Week</span>
+                    <p>Limited premium capacity reserved for urgent stage or recording failures.</p>
+                </div>
+            </article>
+        </section>
+
+        <footer class="footer-line">
+            <span>MADMAN INDUSTRIES</span>
+            <span>Repairs</span>
+        </footer>
+    </main>
+</body>
+</html>
