@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADMAN INDUSTRIES</title>
+    <link rel="icon" href="MMI_designassets/snap_favicon_transcrop3.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-top: #a88287;
+            --bg-mid: #8f6d72;
+            --bg-bottom: #74605f;
+            --panel: rgba(236, 216, 195, 0.68);
+            --panel-line: rgba(89, 33, 34, 0.24);
+            --ink: #261314;
+            --ink-strong: #5a0f21;
+            --link: #5d1723;
+            --link-hover: #8f102a;
+            --link-accent: #39ff6b;
+            --link-accent-hover: #7dff9b;
+            --note: rgba(38, 19, 20, 0.78);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Comfortaa", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at bottom right, rgba(240, 216, 104, 0.28), transparent 18%),
+                linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 36%, var(--bg-bottom) 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .content {
+            width: min(1100px, calc(100% - 32px));
+            margin: 24px auto;
+            padding: 2rem;
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 12px;
+            box-shadow: 0 18px 40px rgba(54, 20, 21, 0.18);
+        }
+
+        .header-box {
+            text-align: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .header-box h1 {
+            margin: 0;
+            color: var(--ink-strong);
+            font-family: "Special Gothic Expanded One", sans-serif;
+            font-size: clamp(2rem, 4vw, 3.6rem);
+            letter-spacing: 0.03em;
+        }
+
+        .track-ascii-wrap {
+            margin: 1.4rem auto 1.7rem;
+            padding: 1rem 1.2rem;
+            max-width: 100%;
+            background: rgba(56, 16, 20, 0.1);
+            border: 1px solid rgba(89, 33, 34, 0.2);
+            border-radius: 12px;
+            overflow-x: auto;
+        }
+
+        .track-ascii {
+            margin: 0;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: clamp(0.44rem, 1.1vw, 0.74rem);
+            font-weight: 700;
+            line-height: 1.14;
+            letter-spacing: 0.08em;
+            color: var(--ink-strong);
+            text-align: center;
+            white-space: pre;
+        }
+
+        .track-ascii-caption {
+            margin: 0.85rem 0 0;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            text-align: center;
+            text-transform: uppercase;
+            color: var(--note);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: var(--link);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        nav a:hover {
+            color: var(--link-hover);
+        }
+
+        nav a.nav-featured {
+            color: var(--link-accent);
+            font-size: 1.04rem;
+            text-transform: none;
+            text-shadow: 0 0 12px rgba(57, 255, 107, 0.28);
+        }
+
+        nav a.nav-featured:hover {
+            color: var(--link-accent-hover);
+        }
+
+        .mmi-subtitle,
+        .mmi-note,
+        footer {
+            text-align: center;
+        }
+
+        .mmi-subtitle {
+            margin: 0 0 1.5rem;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .mmi-note,
+        footer {
+            color: var(--note);
+            font-size: 0.95rem;
+        }
+
+        .mmi-note {
+            margin: 1.5rem 0 0;
+        }
+
+        .mmi-image-map {
+            position: relative;
+            width: min(100%, 1000px);
+            margin: 0 auto;
+        }
+
+        .mmi-image-map img {
+            width: 100%;
+            display: block;
+            border: 2px solid rgba(89, 33, 34, 0.32);
+            box-shadow: 0 14px 34px rgba(44, 14, 17, 0.2);
+        }
+
+        .mmi-head-link {
+            position: absolute;
+            left: var(--x);
+            top: var(--y);
+            transform: translate(-50%, -115%);
+            display: inline-block;
+            padding: 0.12rem 0.35rem;
+            background: rgba(243, 225, 197, 0.92);
+            border: 1px solid rgba(96, 28, 35, 0.3);
+            color: #4f111f;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.72rem;
+            line-height: 1.2;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(54, 20, 21, 0.16);
+        }
+
+        .mmi-head-link:hover {
+            color: var(--link-hover);
+            background: rgba(247, 233, 184, 0.98);
+        }
+
+        footer {
+            margin-top: 1.5rem;
+            font-family: "IBM Plex Mono", monospace;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 860px) {
+            .mmi-head-link {
+                font-size: 0.6rem;
+                padding: 0.08rem 0.22rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .content {
+                width: min(100% - 16px, 1100px);
+                margin: 8px auto;
+                padding: 1.2rem;
+            }
+
+            .track-ascii-wrap {
+                margin: 1.1rem auto 1.4rem;
+                padding: 0.9rem 0.7rem;
+            }
+
+            .track-ascii {
+                text-align: left;
+            }
+
+            .mmi-head-link {
+                font-size: 0.5rem;
+                padding: 0.05rem 0.16rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="content">
+        <div class="header-box">
+            <h1>MADMAN INDUSTRIES</h1>
+        </div>
+
+        <section class="track-ascii-wrap" aria-labelledby="trackAsciiCaption">
+            <pre class="track-ascii" id="trackAscii" aria-hidden="true"></pre>
+            <p class="track-ascii-caption" id="trackAsciiCaption">Indexing by GoldFord / Got You Right</p>
+        </section>
+
+        <nav>
+            <a href="breadboard.html">Breadboard Mock</a>
+            <a href="sensingdata.html">Sensing Data</a>
+            <a href="dblockdevelopment.html">DBlock Development</a>
+            <a href="merch.html">Merch</a>
+        </nav>
+
+        <p class="mmi-subtitle">New business ideas, May 31, 2024</p>
+
+        <div class="mmi-image-map">
+            <img src="MMI_designassets/IBM_mainframeoutside.webp" alt="IBM mainframe courtyard scene with women positioned around the pool and balcony">
+
+            <a class="mmi-head-link" href="#" style="--x: 16%; --y: 17%;">Administrative Materials</a>
+            <a class="mmi-head-link" href="#" style="--x: 28%; --y: 19%;">Aeneas</a>
+            <a class="mmi-head-link" href="#" style="--x: 38%; --y: 18%;">Airplanemode</a>
+            <a class="mmi-head-link" href="#" style="--x: 49%; --y: 18%;">AndrewsChipsinAcup</a>
+            <a class="mmi-head-link" href="dblockdevelopment.html" style="--x: 58%; --y: 18%;">DBlockDevelopment</a>
+            <a class="mmi-head-link" href="#" style="--x: 67%; --y: 17%;">Finance and Accounting</a>
+            <a class="mmi-head-link" href="#" style="--x: 78%; --y: 18%;">GarbageBot</a>
+            <a class="mmi-head-link" href="#" style="--x: 89%; --y: 16%;">HeadMountWebcam</a>
+
+            <a class="mmi-head-link" href="#" style="--x: 62%; --y: 43%;">Lasersketch</a>
+            <a class="mmi-head-link" href="#" style="--x: 41%; --y: 55%;">MadManStudios</a>
+            <a class="mmi-head-link" href="#" style="--x: 30%; --y: 57%;">MechanicalSwitchPiece</a>
+            <a class="mmi-head-link" href="merch.html" style="--x: 17%; --y: 61%;">Merch</a>
+            <a class="mmi-head-link" href="#" style="--x: 57%; --y: 63%;">MM-WebDevelopment</a>
+            <a class="mmi-head-link" href="#" style="--x: 69%; --y: 58%;">namethattune</a>
+            <a class="mmi-head-link" href="#" style="--x: 76%; --y: 54%;">ProjectManagement</a>
+            <a class="mmi-head-link" href="sensingdata.html" style="--x: 11%; --y: 76%;">Sensing_Data</a>
+            <a class="mmi-head-link" href="#" style="--x: 26%; --y: 75%;">Sonoran Discotheque Presents</a>
+            <a class="mmi-head-link" href="#" style="--x: 71%; --y: 71%;">SpecialtyCropBlockGrandProgram</a>
+            <a class="mmi-head-link" href="#" style="--x: 82%; --y: 67%;">TestDevelopment</a>
+        </div>
+
+        <p class="mmi-note">Mock links mapped across the image as a category index for MADMAN INDUSTRIES.</p>
+
+        <footer>MADMAN INDUSTRIES / Main Index</footer>
+    </main>
+
+    <script>
+        const asciiGlyphs = {
+            " ": ["  ", "  ", "  ", "  ", "  "],
+            G: [" ####", "#    ", "#  ##", "#   #", " ####"],
+            H: ["#   #", "#   #", "#####", "#   #", "#   #"],
+            I: ["#####", "  #  ", "  #  ", "  #  ", "#####"],
+            O: [" ### ", "#   #", "#   #", "#   #", " ### "],
+            R: ["#### ", "#   #", "#### ", "#  # ", "#   #"],
+            T: ["#####", "  #  ", "  #  ", "  #  ", "  #  "],
+            U: ["#   #", "#   #", "#   #", "#   #", " ### "],
+            Y: ["#   #", " # # ", "  #  ", "  #  ", "  #  "]
+        };
+
+        const trackTitle = "GOT YOU RIGHT";
+        const asciiTarget = document.getElementById("trackAscii");
+
+        const renderAsciiTitle = (title) => {
+            const rows = ["", "", "", "", ""];
+
+            title.split("").forEach((character) => {
+                const glyph = asciiGlyphs[character] || asciiGlyphs[" "];
+
+                glyph.forEach((line, index) => {
+                    rows[index] += line + "  ";
+                });
+            });
+
+            asciiTarget.textContent = rows.join("\n");
+        };
+
+        renderAsciiTitle(trackTitle);
+    </script>
+</body>
+</html>

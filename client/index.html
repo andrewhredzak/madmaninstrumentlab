@@ -3,377 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MADMAN INDUSTRIES</title>
+    <title>MadManInstrumentLab | Hub</title>
     <link rel="icon" href="MMI_designassets/snap_favicon_transcrop3.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-top: #a88287;
-            --bg-mid: #8f6d72;
-            --bg-bottom: #74605f;
-            --panel: rgba(236, 216, 195, 0.68);
-            --panel-line: rgba(89, 33, 34, 0.24);
-            --ink: #261314;
-            --ink-strong: #5a0f21;
-            --link: #5d1723;
-            --link-hover: #8f102a;
-            --link-accent: #39ff6b;
-            --link-accent-hover: #7dff9b;
-            --note: rgba(38, 19, 20, 0.78);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            padding: 124px 0 0;
-            font-family: "Comfortaa", sans-serif;
-            color: var(--ink);
-            background:
-                radial-gradient(circle at bottom right, rgba(240, 216, 104, 0.28), transparent 18%),
-                linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 36%, var(--bg-bottom) 100%);
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .media-player {
-            position: fixed;
-            top: 16px;
-            left: 16px;
-            z-index: 20;
-            width: min(360px, calc(100vw - 32px));
-            padding: 0.9rem 1rem;
-            background: rgba(243, 225, 197, 0.92);
-            border: 1px solid rgba(96, 28, 35, 0.28);
-            border-radius: 12px;
-            box-shadow: 0 18px 36px rgba(54, 20, 21, 0.2);
-            backdrop-filter: blur(6px);
-        }
-
-        .media-player-label {
-            display: block;
-            margin-bottom: 0.35rem;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--ink-strong);
-        }
-
-        .media-player-title {
-            margin: 0 0 0.4rem;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.88rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .media-player audio {
-            width: 100%;
-            height: 36px;
-        }
-
-        .player-status {
-            margin: 0.45rem 0 0;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.72rem;
-            letter-spacing: 0.04em;
-            color: var(--note);
-        }
-
-        .content {
-            width: min(1100px, calc(100% - 32px));
-            margin: 24px auto;
-            padding: 2rem;
-            background: var(--panel);
-            border: 1px solid var(--panel-line);
-            border-radius: 12px;
-            box-shadow: 0 18px 40px rgba(54, 20, 21, 0.18);
-        }
-
-        .header-box {
-            text-align: center;
-            margin-bottom: 1.25rem;
-        }
-
-        .header-box h1 {
-            margin: 0;
-            color: var(--ink-strong);
-            font-family: "Special Gothic Expanded One", sans-serif;
-            font-size: clamp(2rem, 4vw, 3.6rem);
-            letter-spacing: 0.03em;
-        }
-
-        .track-ascii-wrap {
-            margin: 1.4rem auto 1.7rem;
-            padding: 1rem 1.2rem;
-            max-width: 100%;
-            background: rgba(56, 16, 20, 0.1);
-            border: 1px solid rgba(89, 33, 34, 0.2);
-            border-radius: 12px;
-            overflow-x: auto;
-        }
-
-        .track-ascii {
-            margin: 0;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: clamp(0.44rem, 1.1vw, 0.74rem);
-            font-weight: 700;
-            line-height: 1.14;
-            letter-spacing: 0.08em;
-            color: var(--ink-strong);
-            text-align: center;
-            white-space: pre;
-        }
-
-        .track-ascii-caption {
-            margin: 0.85rem 0 0;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.78rem;
-            letter-spacing: 0.16em;
-            text-align: center;
-            text-transform: uppercase;
-            color: var(--note);
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 1.1rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        nav a {
-            color: var(--link);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.92rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        nav a:hover {
-            color: var(--link-hover);
-        }
-
-        nav a.nav-featured {
-            color: var(--link-accent);
-            font-size: 1.04rem;
-            text-transform: none;
-            text-shadow: 0 0 12px rgba(57, 255, 107, 0.28);
-        }
-
-        nav a.nav-featured:hover {
-            color: var(--link-accent-hover);
-        }
-
-        .mmi-subtitle,
-        .mmi-note,
-        footer {
-            text-align: center;
-        }
-
-        .mmi-subtitle {
-            margin: 0 0 1.5rem;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .mmi-note,
-        footer {
-            color: var(--note);
-            font-size: 0.95rem;
-        }
-
-        .mmi-note {
-            margin: 1.5rem 0 0;
-        }
-
-        .mmi-image-map {
-            position: relative;
-            width: min(100%, 1000px);
-            margin: 0 auto;
-        }
-
-        .mmi-image-map img {
-            width: 100%;
-            display: block;
-            border: 2px solid rgba(89, 33, 34, 0.32);
-            box-shadow: 0 14px 34px rgba(44, 14, 17, 0.2);
-        }
-
-        .mmi-head-link {
-            position: absolute;
-            left: var(--x);
-            top: var(--y);
-            transform: translate(-50%, -115%);
-            display: inline-block;
-            padding: 0.12rem 0.35rem;
-            background: rgba(243, 225, 197, 0.92);
-            border: 1px solid rgba(96, 28, 35, 0.3);
-            color: #4f111f;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.72rem;
-            line-height: 1.2;
-            white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(54, 20, 21, 0.16);
-        }
-
-        .mmi-head-link:hover {
-            color: var(--link-hover);
-            background: rgba(247, 233, 184, 0.98);
-        }
-
-        footer {
-            margin-top: 1.5rem;
-            font-family: "IBM Plex Mono", monospace;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        @media (max-width: 860px) {
-            .mmi-head-link {
-                font-size: 0.6rem;
-                padding: 0.08rem 0.22rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            body {
-                padding-top: 172px;
-            }
-
-            .media-player {
-                top: 8px;
-                left: 8px;
-                width: calc(100vw - 16px);
-                padding: 0.8rem 0.85rem;
-            }
-
-            .content {
-                width: min(100% - 16px, 1100px);
-                margin: 8px auto;
-                padding: 1.2rem;
-            }
-
-            .track-ascii-wrap {
-                margin: 1.1rem auto 1.4rem;
-                padding: 0.9rem 0.7rem;
-            }
-
-            .track-ascii {
-                text-align: left;
-            }
-
-            .mmi-head-link {
-                font-size: 0.5rem;
-                padding: 0.05rem 0.16rem;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="madmaninstrumentlab-theme.css">
 </head>
-<body>
-    <aside class="media-player" aria-label="Site music player">
-        <span class="media-player-label">Now Playing</span>
-        <p class="media-player-title">GoldFord / Got You Right</p>
-        <audio id="landingTrack" controls autoplay preload="auto" playsinline>
-            <source src="MMI_designassets/GoldFord_-_Got_You_Right_CeeNaija.com_.mp3" type="audio/mpeg">
-        </audio>
-        <p class="player-status" id="playerStatus">Attempting autoplay on page load.</p>
-    </aside>
+<body class="site-landing">
+    <main class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>MADMAN INDUSTRIES / MADMANINSTRUMENTLAB</span>
+            </div>
+            <nav class="nav">
+                <a class="nav-vision" href="madmanindustries-index.html">MADMAN INDUSTRIES VISION</a>
+                <a href="madmaninstrumentlab.html">Applications Summary</a>
+                <a href="merch.html">Merch</a>
+            </nav>
+        </header>
 
-    <main class="content">
-        <div class="header-box">
-            <h1>MADMAN INDUSTRIES</h1>
-        </div>
-
-        <section class="track-ascii-wrap" aria-labelledby="trackAsciiCaption">
-            <pre class="track-ascii" id="trackAscii" aria-hidden="true"></pre>
-            <p class="track-ascii-caption" id="trackAsciiCaption">Indexing by GoldFord / Got You Right</p>
+        <section class="media-player-wrap" aria-label="Site music player">
+            <div class="media-player">
+                <div class="media-player-copy">
+                    <span class="media-player-label">Landing Audio</span>
+                    <p class="media-player-title">GoldFord / Got You Right</p>
+                    <p class="media-player-note">
+                        Playback for the landing page. If the browser blocks autoplay, one tap or key press will unlock it.
+                    </p>
+                </div>
+                <div class="media-player-controls">
+                    <audio id="landingTrack" controls autoplay preload="auto" playsinline>
+                        <source src="MMI_designassets/GoldFord_-_Got_You_Right_CeeNaija.com_.mp3" type="audio/mpeg">
+                    </audio>
+                    <p class="player-status" id="playerStatus">Attempting autoplay on page load.</p>
+                </div>
+            </div>
         </section>
 
-        <nav>
-            <a href="breadboard.html">Breadboard Mock</a>
-            <a class="nav-featured" href="madmaninstrumentlab-hub.html">MadManInstrumentLab</a>
-            <a href="sensingdata.html">Sensing Data</a>
-            <a href="dblockdevelopment.html">DBlock Development</a>
-            <a href="merch.html">Merch</a>
-        </nav>
+        <section class="hero">
+            <div class="hero-copy">
+                <span class="eyebrow">Routing Board / Poster System</span>
+                <div class="year-mark">2026</div>
+                <h1>MadManInstrumentLab</h1>
+                <p>
+                    The central landing page for MADMAN INDUSTRIES, routed through the instrument-lab side of the brand.
+                    Documents, repair intake, product tracks, events, and merch now sit inside one shared editorial system
+                    rather than separate mock looks.
+                </p>
+                <div class="chip-row">
+                    <span class="chip">Documents live</span>
+                    <span class="chip">Repair intake mocked</span>
+                    <span class="chip">Products staged</span>
+                    <span class="chip">Events routed</span>
+                    <span class="chip">Merch active</span>
+                </div>
+            </div>
 
-        <p class="mmi-subtitle">New business ideas, May 31, 2024</p>
+            <figure class="photo-panel">
+                <img src="MMI_designassets/ibmsand1.png" alt="Archival IBM San Jose courtyard image with a geometric tower sculpture.">
+                <figcaption>Archive still / desaturated architectural treatment</figcaption>
+            </figure>
+        </section>
 
-        <div class="mmi-image-map">
-            <img src="MMI_designassets/IBM_mainframeoutside.webp" alt="IBM mainframe courtyard scene with women positioned around the pool and balcony">
+        <section class="legend-box" aria-label="hub legend">
+            <span class="legend-title">Legend</span>
+            <div class="legend-items">
+                <span>Documents</span>
+                <span>Repairs</span>
+                <span>Products</span>
+                <span>Events</span>
+                <span>Merch</span>
+            </div>
+        </section>
 
-            <a class="mmi-head-link" href="#" style="--x: 16%; --y: 17%;">Administrative Materials</a>
-            <a class="mmi-head-link" href="#" style="--x: 28%; --y: 19%;">Aeneas</a>
-            <a class="mmi-head-link" href="#" style="--x: 38%; --y: 18%;">Airplanemode</a>
-            <a class="mmi-head-link" href="#" style="--x: 49%; --y: 18%;">AndrewsChipsinAcup</a>
-            <a class="mmi-head-link" href="dblockdevelopment.html" style="--x: 58%; --y: 18%;">DBlockDevelopment</a>
-            <a class="mmi-head-link" href="#" style="--x: 67%; --y: 17%;">Finance and Accounting</a>
-            <a class="mmi-head-link" href="#" style="--x: 78%; --y: 18%;">GarbageBot</a>
-            <a class="mmi-head-link" href="#" style="--x: 89%; --y: 16%;">HeadMountWebcam</a>
+        <section class="page-main">
+            <div class="panel-grid auto">
+                <a class="panel-card" href="madmaninstrumentlab-documents.html">
+                    <span class="panel-kicker">Archive</span>
+                    <h2>Documents</h2>
+                    <p>
+                        Route into summaries, writeups, procedure PDFs, spec packets, and bench notes. The applications
+                        summary remains the lead document inside this lane.
+                    </p>
+                    <span class="card-link">Open documents</span>
+                </a>
 
-            <a class="mmi-head-link" href="#" style="--x: 62%; --y: 43%;">Lasersketch</a>
-            <a class="mmi-head-link" href="#" style="--x: 41%; --y: 55%;">MadManStudios</a>
-            <a class="mmi-head-link" href="#" style="--x: 30%; --y: 57%;">MechanicalSwitchPiece</a>
-            <a class="mmi-head-link" href="merch.html" style="--x: 17%; --y: 61%;">Merch</a>
-            <a class="mmi-head-link" href="#" style="--x: 57%; --y: 63%;">MM-WebDevelopment</a>
-            <a class="mmi-head-link" href="#" style="--x: 69%; --y: 58%;">namethattune</a>
-            <a class="mmi-head-link" href="#" style="--x: 76%; --y: 54%;">ProjectManagement</a>
-            <a class="mmi-head-link" href="sensingdata.html" style="--x: 11%; --y: 76%;">Sensing_Data</a>
-            <a class="mmi-head-link" href="#" style="--x: 26%; --y: 75%;">Sonoran Discotheque Presents</a>
-            <a class="mmi-head-link" href="#" style="--x: 71%; --y: 71%;">SpecialtyCropBlockGrandProgram</a>
-            <a class="mmi-head-link" href="#" style="--x: 82%; --y: 67%;">TestDevelopment</a>
-        </div>
+                <a class="panel-card" href="repairs/">
+                    <span class="panel-kicker">Bench Work</span>
+                    <h2>Repairs</h2>
+                    <p>
+                        Intake status, parts holds, workflow stages, and return windows for the repair side of the lab.
+                    </p>
+                    <span class="card-link">Open repairs</span>
+                </a>
 
-        <p class="mmi-note">Mock links mapped across the image as a category index for MADMAN INDUSTRIES.</p>
+                <a class="panel-card" href="madmaninstrumentlab-products.html">
+                    <span class="panel-kicker">Concept Shelf</span>
+                    <h2>Products</h2>
+                    <p>
+                        Early product concepts, release tiers, and prototype positioning for support hardware and public-facing tools.
+                    </p>
+                    <span class="card-link">Open products</span>
+                </a>
 
-        <footer>MADMAN INDUSTRIES / Main Index</footer>
+                <a class="panel-card" href="madmaninstrumentlab-events.html">
+                    <span class="panel-kicker">Calendar</span>
+                    <h2>Events</h2>
+                    <p>
+                        Public program routing for workshops, listening sessions, open bench hours, and prototype showcases.
+                    </p>
+                    <span class="card-link">Open events</span>
+                </a>
+
+                <a class="panel-card" href="merch.html">
+                    <span class="panel-kicker">Campaign Surface</span>
+                    <h2>Merch</h2>
+                    <p>
+                        Sticker mockups, product-adjacent editions, and future drop surfaces connected back into the lab system.
+                    </p>
+                    <span class="card-link">Open merch</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="notes-grid">
+            <article class="note-card">
+                <span class="section-label">Featured Route</span>
+                <h3>Applications Summary</h3>
+                <p>
+                    The original standalone summary page still explains the technical direction of the lab. It now reads as a
+                    formal document within the wider archive rather than the hub itself.
+                </p>
+                <a class="card-link" href="madmaninstrumentlab.html">View applications summary</a>
+            </article>
+
+            <article class="note-card">
+                <span class="section-label">Primary Route</span>
+                <h3>Entry Point</h3>
+                <p>
+                    This page now acts as the top-level website landing page, with the original MADMAN INDUSTRIES index kept
+                    online as a separate legacy entry point.
+                </p>
+                <a class="card-link" href="madmanindustries-index.html">Open original main index</a>
+            </article>
+        </section>
+
+        <footer class="footer-line">
+            <span>MADMAN INDUSTRIES</span>
+            <span>Instrument Lab Hub</span>
+        </footer>
     </main>
 
     <script>
-        const asciiGlyphs = {
-            " ": ["  ", "  ", "  ", "  ", "  "],
-            G: [" ####", "#    ", "#  ##", "#   #", " ####"],
-            H: ["#   #", "#   #", "#####", "#   #", "#   #"],
-            I: ["#####", "  #  ", "  #  ", "  #  ", "#####"],
-            O: [" ### ", "#   #", "#   #", "#   #", " ### "],
-            R: ["#### ", "#   #", "#### ", "#  # ", "#   #"],
-            T: ["#####", "  #  ", "  #  ", "  #  ", "  #  "],
-            U: ["#   #", "#   #", "#   #", "#   #", " ### "],
-            Y: ["#   #", " # # ", "  #  ", "  #  ", "  #  "]
-        };
-
-        const trackTitle = "GOT YOU RIGHT";
-        const asciiTarget = document.getElementById("trackAscii");
         const landingTrack = document.getElementById("landingTrack");
         const playerStatus = document.getElementById("playerStatus");
-
-        const renderAsciiTitle = (title) => {
-            const rows = ["", "", "", "", ""];
-
-            title.split("").forEach((character) => {
-                const glyph = asciiGlyphs[character] || asciiGlyphs[" "];
-
-                glyph.forEach((line, index) => {
-                    rows[index] += line + "  ";
-                });
-            });
-
-            asciiTarget.textContent = rows.join("\n");
-        };
 
         const setPlayerStatus = (message) => {
             playerStatus.textContent = message;
@@ -397,7 +180,6 @@
             tryAutoplay();
         };
 
-        renderAsciiTitle(trackTitle);
         tryAutoplay();
 
         ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
