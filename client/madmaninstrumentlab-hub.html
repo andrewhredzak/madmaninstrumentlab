@@ -6,236 +6,7 @@
     <title>MadManInstrumentLab | Hub</title>
     <link rel="icon" href="MMI_designassets/snap_favicon_transcrop3.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-top: #18332e;
-            --bg-mid: #245149;
-            --bg-bottom: #63715b;
-            --panel: rgba(242, 246, 238, 0.94);
-            --panel-soft: rgba(255, 255, 255, 0.06);
-            --text: #122320;
-            --muted: rgba(18, 35, 32, 0.74);
-            --line: rgba(18, 35, 32, 0.2);
-            --accent: #39ff6b;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            color: var(--text);
-            font-family: "IBM Plex Mono", monospace;
-            background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 48%, var(--bg-bottom) 100%);
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .shell {
-            width: min(1180px, calc(100% - 32px));
-            margin: 20px auto;
-            border: 1px solid var(--line);
-            background: var(--panel);
-            overflow: hidden;
-        }
-
-        .topbar,
-        .footer-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.4rem;
-        }
-
-        .topbar {
-            border-bottom: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            min-width: 0;
-        }
-
-        .brand-mark {
-            width: 13px;
-            height: 13px;
-            border-radius: 0;
-            background: var(--accent);
-            flex: 0 0 auto;
-        }
-
-        .brand span,
-        .nav a,
-        .status-chip,
-        .eyebrow,
-        .card-kicker,
-        .footer-line {
-            font-size: 0.8rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-        }
-
-        .nav {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .nav a {
-            color: var(--muted);
-            border-bottom: 1px solid transparent;
-        }
-
-        .nav a:hover,
-        .mini-link:hover {
-            color: var(--text);
-            border-color: currentColor;
-        }
-
-        .hero {
-            padding: 1.7rem 1.5rem 1.4rem;
-            border-bottom: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .eyebrow,
-        .card-kicker {
-            display: inline-block;
-            color: var(--muted);
-        }
-
-        h1,
-        h2 {
-            margin: 0;
-            font-family: "Special Gothic Expanded One", sans-serif;
-            letter-spacing: 0.03em;
-        }
-
-        h1 {
-            margin-top: 0.7rem;
-            font-size: clamp(2.4rem, 6vw, 5.2rem);
-            line-height: 0.92;
-        }
-
-        .hero p {
-            max-width: 50rem;
-            margin: 1rem 0 0;
-            color: var(--muted);
-            line-height: 1.8;
-        }
-
-        .status-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1.25rem;
-        }
-
-        .status-chip {
-            padding: 0.5rem 0.75rem;
-            border: 1px solid rgba(18, 35, 32, 0.12);
-            border-radius: 0;
-            background: transparent;
-        }
-
-        .section-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            padding: 1.5rem;
-        }
-
-        .card,
-        .mini-panel {
-            border: 1px solid var(--line);
-            border-radius: 0;
-            background: transparent;
-        }
-
-        .card {
-            min-height: 240px;
-            padding: 1.1rem;
-        }
-
-        .card h2 {
-            margin-top: 0.7rem;
-            font-size: 1.35rem;
-        }
-
-        .card p,
-        .mini-panel p {
-            margin: 0.8rem 0 0;
-            color: var(--muted);
-            line-height: 1.75;
-            font-size: 0.94rem;
-        }
-
-        .card-link,
-        .mini-link {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 1.1rem;
-            color: var(--text);
-            font-size: 0.82rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            border-bottom: 1px solid transparent;
-        }
-
-        .featured-row {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 1rem;
-            padding: 0 1.5rem 1.5rem;
-        }
-
-        .mini-panel {
-            padding: 1.1rem 1.15rem;
-        }
-
-        .mini-panel h2 {
-            font-size: 1rem;
-        }
-
-        .footer-line {
-            border-top: 1px solid var(--line);
-            color: var(--muted);
-        }
-
-        @media (max-width: 860px) {
-            .featured-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 680px) {
-            .shell {
-                width: min(100% - 16px, 1180px);
-                margin: 8px auto;
-            }
-
-            .topbar,
-            .footer-line {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .section-grid,
-            .featured-row {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="madmaninstrumentlab-theme.css">
 </head>
 <body>
     <main class="shell">
@@ -252,88 +23,110 @@
         </header>
 
         <section class="hero">
-            <span class="eyebrow">Routing Board</span>
-            <h1>MadManInstrumentLab</h1>
-            <p>
-                A central hub for the instrument-lab side of MADMAN INDUSTRIES. Use this page as the main launch point
-                for documents, repair intake, product experiments, event planning, and merch surfaces.
-            </p>
-            <div class="status-row">
-                <span class="status-chip">Documents live</span>
-                <span class="status-chip">Repair intake mocked</span>
-                <span class="status-chip">Products staged</span>
-                <span class="status-chip">Events routed</span>
-                <span class="status-chip">Merch active</span>
+            <div class="hero-copy">
+                <span class="eyebrow">Routing Board / Poster System</span>
+                <div class="year-mark">2026</div>
+                <h1>MadManInstrumentLab</h1>
+                <p>
+                    The central routing page for the instrument-lab side of MADMAN INDUSTRIES. Documents, repair intake,
+                    product tracks, events, and merch now sit inside one shared editorial system rather than separate mock
+                    looks.
+                </p>
+                <div class="chip-row">
+                    <span class="chip">Documents live</span>
+                    <span class="chip">Repair intake mocked</span>
+                    <span class="chip">Products staged</span>
+                    <span class="chip">Events routed</span>
+                    <span class="chip">Merch active</span>
+                </div>
+            </div>
+
+            <figure class="photo-panel">
+                <img src="MMI_designassets/ibmsand1.png" alt="Archival IBM San Jose courtyard image with a geometric tower sculpture.">
+                <figcaption>Archive still / desaturated architectural treatment</figcaption>
+            </figure>
+        </section>
+
+        <section class="legend-box" aria-label="hub legend">
+            <span class="legend-title">Legend</span>
+            <div class="legend-items">
+                <span>Documents</span>
+                <span>Repairs</span>
+                <span>Products</span>
+                <span>Events</span>
+                <span>Merch</span>
             </div>
         </section>
 
-        <section class="section-grid">
-            <a class="card" href="madmaninstrumentlab-documents.html">
-                <span class="card-kicker">Archive</span>
-                <h2>Documents</h2>
-                <p>
-                    Route into summaries, writeups, spec packets, and bench notes. The Applications Summary sheet stays
-                    available as a featured document inside this lane.
-                </p>
-                <span class="card-link">Open documents</span>
-            </a>
+        <section class="page-main">
+            <div class="panel-grid auto">
+                <a class="panel-card" href="madmaninstrumentlab-documents.html">
+                    <span class="panel-kicker">Archive</span>
+                    <h2>Documents</h2>
+                    <p>
+                        Route into summaries, writeups, procedure PDFs, spec packets, and bench notes. The applications
+                        summary remains the lead document inside this lane.
+                    </p>
+                    <span class="card-link">Open documents</span>
+                </a>
 
-            <a class="card" href="madmaninstrumentlab-repairs.html">
-                <span class="card-kicker">Bench Work</span>
-                <h2>Repairs</h2>
-                <p>
-                    Intake status, parts holds, bench sequencing, and return windows for the repair side of the lab.
-                </p>
-                <span class="card-link">Open repairs</span>
-            </a>
+                <a class="panel-card" href="madmaninstrumentlab-repairs.html">
+                    <span class="panel-kicker">Bench Work</span>
+                    <h2>Repairs</h2>
+                    <p>
+                        Intake status, parts holds, workflow stages, and return windows for the repair side of the lab.
+                    </p>
+                    <span class="card-link">Open repairs</span>
+                </a>
 
-            <a class="card" href="madmaninstrumentlab-products.html">
-                <span class="card-kicker">Concept Shelf</span>
-                <h2>Products</h2>
-                <p>
-                    Early product concepts, release tiers, and prototype positioning for hardware and support tools.
-                </p>
-                <span class="card-link">Open products</span>
-            </a>
+                <a class="panel-card" href="madmaninstrumentlab-products.html">
+                    <span class="panel-kicker">Concept Shelf</span>
+                    <h2>Products</h2>
+                    <p>
+                        Early product concepts, release tiers, and prototype positioning for support hardware and public-facing tools.
+                    </p>
+                    <span class="card-link">Open products</span>
+                </a>
 
-            <a class="card" href="madmaninstrumentlab-events.html">
-                <span class="card-kicker">Calendar</span>
-                <h2>Events</h2>
-                <p>
-                    Mock public-facing event routing for workshops, bench nights, listening rooms, and demo sessions.
-                </p>
-                <span class="card-link">Open events</span>
-            </a>
+                <a class="panel-card" href="madmaninstrumentlab-events.html">
+                    <span class="panel-kicker">Calendar</span>
+                    <h2>Events</h2>
+                    <p>
+                        Public program routing for workshops, listening sessions, open bench hours, and prototype showcases.
+                    </p>
+                    <span class="card-link">Open events</span>
+                </a>
 
-            <a class="card" href="merch.html">
-                <span class="card-kicker">Campaign Surface</span>
-                <h2>Merch</h2>
-                <p>
-                    Existing sticker mockups and future merch drops, presented as a live branch of the instrument-lab hub.
-                </p>
-                <span class="card-link">Open merch</span>
-            </a>
+                <a class="panel-card" href="merch.html">
+                    <span class="panel-kicker">Campaign Surface</span>
+                    <h2>Merch</h2>
+                    <p>
+                        Sticker mockups, product-adjacent editions, and future drop surfaces connected back into the lab system.
+                    </p>
+                    <span class="card-link">Open merch</span>
+                </a>
+            </div>
         </section>
 
-        <section class="featured-row">
-            <article class="mini-panel">
-                <span class="eyebrow">Featured Document</span>
-                <h2>Applications Summary</h2>
+        <section class="notes-grid">
+            <article class="note-card">
+                <span class="section-label">Featured Route</span>
+                <h3>Applications Summary</h3>
                 <p>
-                    The original standalone Applications Summary page is still part of the lab structure. It now lives as a
-                    specific document entry beneath this hub rather than being the hub itself.
+                    The original standalone summary page still explains the technical direction of the lab. It now reads as a
+                    formal document within the wider archive rather than the hub itself.
                 </p>
-                <a class="mini-link" href="madmaninstrumentlab.html">View applications summary</a>
+                <a class="card-link" href="madmaninstrumentlab.html">View applications summary</a>
             </article>
 
-            <article class="mini-panel">
-                <span class="eyebrow">Navigation Note</span>
-                <h2>Primary Route</h2>
+            <article class="note-card">
+                <span class="section-label">Primary Route</span>
+                <h3>Entry Point</h3>
                 <p>
-                    The main landing-page header now points here, so this page functions as the top-level InstrumentLab
-                    doorway across the site.
+                    This page remains the top-level doorway for the MadManInstrumentLab section, now visually aligned with the
+                    poster-led events treatment used across the subsection.
                 </p>
-                <a class="mini-link" href="index.html">Return to main index</a>
+                <a class="card-link" href="index.html">Return to main index</a>
             </article>
         </section>
 

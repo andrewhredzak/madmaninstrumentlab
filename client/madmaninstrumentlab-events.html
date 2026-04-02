@@ -6,186 +6,7 @@
     <title>Events | MadManInstrumentLab</title>
     <link rel="icon" href="MMI_designassets/snap_favicon_transcrop3.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-top: #2d2237;
-            --bg-bottom: #86585f;
-            --panel: rgba(247, 236, 232, 0.95);
-            --panel-soft: rgba(255, 255, 255, 0.08);
-            --text: #221721;
-            --muted: rgba(34, 23, 33, 0.74);
-            --line: rgba(34, 23, 33, 0.2);
-            --accent: #ffb36b;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            color: var(--text);
-            font-family: "IBM Plex Mono", monospace;
-            background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .shell {
-            width: min(1160px, calc(100% - 32px));
-            margin: 20px auto;
-            border: 1px solid var(--line);
-            background: var(--panel);
-            overflow: hidden;
-        }
-
-        .topbar,
-        .footer-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.4rem;
-        }
-
-        .topbar {
-            border-bottom: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .brand,
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .brand-mark {
-            width: 12px;
-            height: 12px;
-            border-radius: 0;
-            background: var(--accent);
-        }
-
-        .brand span,
-        .nav a,
-        .eyebrow,
-        .event-tag,
-        .footer-line {
-            font-size: 0.8rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-        }
-
-        .nav a {
-            color: var(--muted);
-            border-bottom: 1px solid transparent;
-        }
-
-        .nav a:hover {
-            color: var(--text);
-            border-color: currentColor;
-        }
-
-        .hero {
-            padding: 1.6rem 1.5rem 1.3rem;
-            border-bottom: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .eyebrow,
-        .event-tag {
-            display: inline-block;
-            color: var(--muted);
-        }
-
-        h1,
-        h2 {
-            margin: 0;
-            font-family: "Special Gothic Expanded One", sans-serif;
-            letter-spacing: 0.03em;
-        }
-
-        h1 {
-            margin-top: 0.7rem;
-            font-size: clamp(2.2rem, 5vw, 4.8rem);
-            line-height: 0.94;
-        }
-
-        .hero p,
-        .event-card p,
-        .support-card p {
-            margin: 0.85rem 0 0;
-            color: var(--muted);
-            line-height: 1.75;
-            font-size: 0.94rem;
-        }
-
-        .event-grid,
-        .support-grid {
-            display: grid;
-            gap: 1rem;
-            padding: 1.5rem;
-        }
-
-        .event-grid {
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        }
-
-        .support-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            padding-top: 0;
-        }
-
-        .event-card,
-        .support-card {
-            border: 1px solid var(--line);
-            border-radius: 0;
-            background: transparent;
-            padding: 1rem;
-        }
-
-        .event-card h2,
-        .support-card h2 {
-            margin-top: 0.65rem;
-            font-size: 1.06rem;
-        }
-
-        .footer-line {
-            border-top: 1px solid var(--line);
-            color: var(--muted);
-        }
-
-        @media (max-width: 860px) {
-            .support-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 680px) {
-            .shell {
-                width: min(100% - 16px, 1160px);
-                margin: 8px auto;
-            }
-
-            .topbar,
-            .footer-line {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .event-grid,
-            .support-grid {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="madmaninstrumentlab-theme.css">
 </head>
 <body>
     <main class="shell">
@@ -202,51 +23,125 @@
         </header>
 
         <section class="hero">
-            <span class="eyebrow">Public Calendar</span>
-            <h1>Events</h1>
-            <p>
-                A mock events page for MadManInstrumentLab that frames the lab as a place for workshops, demos, listening
-                sessions, and focused public programming.
-            </p>
+            <div class="hero-copy">
+                <span class="eyebrow">Public Calendar / Live Program</span>
+                <div class="year-mark">2026</div>
+                <h1>MadManInstrumentLab Events</h1>
+                <p>
+                    A poster-style schedule for workshops, listening sessions, open bench nights, and prototype showcases.
+                    The layout leans editorial: paper surface, archival photo treatment, strict columns, and enough white
+                    space to let the year carry the page.
+                </p>
+            </div>
+
+            <figure class="photo-panel">
+                <img src="MMI_designassets/IBM_mainframeoutside.webp" alt="Archival black-and-white poolside scene with large computers arranged in the foreground.">
+                <figcaption>Archive still / high-contrast monochrome treatment</figcaption>
+            </figure>
         </section>
 
-        <section class="event-grid">
-            <article class="event-card">
-                <span class="event-tag">Workshop / June 14</span>
-                <h2>Bench Basics Night</h2>
-                <p>Intro session on fault tracing, signal-path reading, and safe teardown habits for beginner repair work.</p>
+        <section class="legend-box" aria-label="event legend">
+            <span class="legend-title">Legend</span>
+            <div class="legend-items">
+                <span>Workshop</span>
+                <span>Listening</span>
+                <span>Open Bench</span>
+                <span>Showcase</span>
+            </div>
+        </section>
+
+        <section class="schedule-wrap">
+            <span class="section-label">Dates / Venue / Region</span>
+            <div class="row-head" aria-hidden="true">
+                <span>Date</span>
+                <span>Venue</span>
+                <span>Region</span>
+                <span></span>
+            </div>
+
+            <article class="row-item">
+                <div class="row-cell" data-label="Date">
+                    <strong>Jun 14</strong>
+                    <span>Workshop / 6 PM</span>
+                </div>
+                <div class="row-cell" data-label="Venue">
+                    <strong>Bench Basics Night</strong>
+                    <span>Signal Yard Workshop Room</span>
+                </div>
+                <div class="row-cell" data-label="Region">Milwaukee, Wisconsin</div>
+                <a class="row-action" href="madmaninstrumentlab-documents.html">RSVP</a>
             </article>
 
-            <article class="event-card">
-                <span class="event-tag">Listening Room / June 28</span>
-                <h2>Signal Chain Playback</h2>
-                <p>Small-room playback event focused on how modified chains alter texture, saturation, and room behavior.</p>
+            <article class="row-item">
+                <div class="row-cell" data-label="Date">
+                    <strong>Jun 28</strong>
+                    <span>Listening / 8 PM</span>
+                </div>
+                <div class="row-cell" data-label="Venue">
+                    <strong>Signal Chain Playback</strong>
+                    <span>East Room Listening Hall</span>
+                </div>
+                <div class="row-cell" data-label="Region">Chicago, Illinois</div>
+                <a class="row-action" href="madmaninstrumentlab-documents.html">Tickets</a>
             </article>
 
-            <article class="event-card">
-                <span class="event-tag">Open Bench / July 12</span>
-                <h2>Repair Drop-In Hours</h2>
-                <p>Guided intake window for diagnostics, maintenance questions, and lightweight service triage.</p>
+            <article class="row-item">
+                <div class="row-cell" data-label="Date">
+                    <strong>Jul 12</strong>
+                    <span>Open Bench / 1 PM</span>
+                </div>
+                <div class="row-cell" data-label="Venue">
+                    <strong>Repair Drop-In Hours</strong>
+                    <span>Open Bench Annex</span>
+                </div>
+                <div class="row-cell" data-label="Region">Madison, Wisconsin</div>
+                <a class="row-action" href="madmaninstrumentlab-documents.html">RSVP</a>
             </article>
 
-            <article class="event-card">
-                <span class="event-tag">Showcase / July 26</span>
-                <h2>Prototype Demo Session</h2>
-                <p>Short presentations for current tools, utility kits, and field-ready concept builds from the lab.</p>
+            <article class="row-item">
+                <div class="row-cell" data-label="Date">
+                    <strong>Jul 26</strong>
+                    <span>Showcase / 7 PM</span>
+                </div>
+                <div class="row-cell" data-label="Venue">
+                    <strong>Prototype Demo Session</strong>
+                    <span>Dock Hall Assembly Floor</span>
+                </div>
+                <div class="row-cell" data-label="Region">Minneapolis, Minnesota</div>
+                <a class="row-action" href="madmaninstrumentlab-documents.html">Tickets</a>
+            </article>
+
+            <article class="row-item">
+                <div class="row-cell" data-label="Date">
+                    <strong>Aug 09</strong>
+                    <span>Showcase / 5 PM</span>
+                </div>
+                <div class="row-cell" data-label="Venue">
+                    <strong>Field Utility Preview</strong>
+                    <span>River Test Floor</span>
+                </div>
+                <div class="row-cell" data-label="Region">Detroit, Michigan</div>
+                <a class="row-action" href="madmaninstrumentlab-documents.html">Tickets</a>
             </article>
         </section>
 
-        <section class="support-grid">
-            <article class="support-card">
-                <span class="event-tag">Format</span>
-                <h2>Event Modes</h2>
-                <p>Use this page for a mix of educational workshops, showcase formats, appointment-style bench nights, and intimate listening events.</p>
+        <section class="notes-grid">
+            <article class="note-card">
+                <span class="section-label">Format</span>
+                <h3>Poster Logic</h3>
+                <p>
+                    The page reads like a printed event sheet translated to the web: oversized year, restrained columns,
+                    one centered legend, and hover states instead of card-heavy UI.
+                </p>
             </article>
 
-            <article class="support-card">
-                <span class="event-tag">Next Step</span>
-                <h2>Future Expansion</h2>
-                <p>This mock can grow into a calendar view, RSVP flow, ticket surface, or archive of past event flyers.</p>
+            <article class="note-card">
+                <span class="section-label">Access</span>
+                <h3>Interaction Surface</h3>
+                <p>
+                    On larger screens each date row reveals a compact action button on hover. On mobile the layout collapses
+                    to a single readable stack with the action button always visible.
+                </p>
             </article>
         </section>
 
