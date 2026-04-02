@@ -7,6 +7,8 @@
     --line: rgba(23, 18, 13, 0.16);
     --line-strong: rgba(23, 18, 13, 0.34);
     --accent: #d92b2b;
+    --marker-green: #d4ff3f;
+    --marker-green-deep: #1f3000;
     --shadow: rgba(41, 28, 18, 0.14);
 }
 
@@ -23,6 +25,93 @@ body {
         radial-gradient(circle at top left, rgba(217, 43, 43, 0.06), transparent 18%),
         linear-gradient(180deg, #fbf8f3 0%, #f0eae0 100%);
     position: relative;
+}
+
+.media-player-wrap {
+    position: relative;
+    z-index: 1;
+    padding: 1.15rem 2rem 0;
+}
+
+.site-landing .media-player {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+    gap: 1.1rem;
+    align-items: end;
+    padding: 1rem 1.1rem 1.05rem;
+    border: 1px solid var(--line-strong);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(242, 236, 227, 0.94)),
+        var(--paper);
+    box-shadow: 0 18px 38px rgba(41, 28, 18, 0.14);
+    overflow: hidden;
+}
+
+.site-landing .media-player::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(217, 43, 43, 0.18), transparent 16%, transparent 84%, rgba(23, 18, 13, 0.05)),
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0 1px, transparent 1px 7px);
+    opacity: 0.4;
+}
+
+.site-landing .media-player-copy,
+.site-landing .media-player-controls {
+    position: relative;
+    z-index: 1;
+}
+
+.site-landing .media-player-copy {
+    padding-right: 0.3rem;
+}
+
+.site-landing .media-player-label {
+    display: inline-block;
+    margin-bottom: 0.45rem;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.site-landing .media-player-title {
+    margin: 0;
+    font-family: "Special Gothic Expanded One", sans-serif;
+    font-size: clamp(1.15rem, 2.2vw, 1.85rem);
+    letter-spacing: 0.03em;
+    line-height: 1;
+}
+
+.site-landing .media-player-note {
+    max-width: 30rem;
+    margin: 0.65rem 0 0;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.75;
+}
+
+.site-landing .media-player-controls {
+    padding-left: 1rem;
+    border-left: 1px solid var(--line);
+}
+
+.site-landing .media-player audio {
+    width: 100%;
+    height: 38px;
+    display: block;
+}
+
+.site-landing .player-status {
+    margin: 0.55rem 0 0;
+    color: var(--muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 body::before {
@@ -116,6 +205,22 @@ img {
 .nav a {
     color: var(--muted);
     border-bottom: 1px solid transparent;
+}
+
+.nav a.nav-vision {
+    padding: 0.22rem 0.42rem;
+    color: var(--marker-green-deep);
+    font-weight: 700;
+    background: linear-gradient(180deg, rgba(223, 255, 0, 0.28) 0%, rgba(223, 255, 0, 0.98) 100%);
+    border-bottom-color: rgba(31, 48, 0, 0.45);
+    box-shadow: inset 0 -0.08rem 0 rgba(31, 48, 0, 0.08);
+}
+
+.nav a.nav-vision:hover,
+.nav a.nav-vision:focus-visible {
+    color: #111000;
+    border-color: rgba(17, 16, 0, 0.7);
+    background: linear-gradient(180deg, rgba(232, 255, 86, 0.4) 0%, rgba(232, 255, 86, 1) 100%);
 }
 
 .nav a:hover,
@@ -589,6 +694,7 @@ h1 {
 
     .hero,
     .page-main,
+    .media-player-wrap,
     .schedule-wrap,
     .notes-grid {
         padding-left: 1rem;
@@ -601,5 +707,18 @@ h1 {
 
     .legend-box {
         width: min(100% - 2rem, 440px);
+    }
+
+    .site-landing .media-player {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+        padding: 0.9rem 0.95rem 1rem;
+    }
+
+    .site-landing .media-player-controls {
+        padding-left: 0;
+        border-left: 0;
+        border-top: 1px solid var(--line);
+        padding-top: 0.9rem;
     }
 }
