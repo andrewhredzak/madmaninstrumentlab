@@ -5,402 +5,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MadManInstrumentLab | Applications Summary</title>
     <link rel="icon" href="MMI_designassets/snap_favicon_transcrop3.png" type="image/png">
-    <style>
-        :root {
-            --paper: #efe2a8;
-            --paper-deep: #e2c96f;
-            --ink: #1f140f;
-            --rule: rgba(31, 20, 15, 0.45);
-            --panel: rgba(255, 239, 181, 0.38);
-            --shadow: rgba(60, 37, 10, 0.18);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            color: var(--ink);
-            background:
-                radial-gradient(circle at bottom left, rgba(246, 187, 96, 0.36), transparent 24%),
-                radial-gradient(circle at top right, rgba(147, 103, 109, 0.3), transparent 28%),
-                linear-gradient(180deg, #d7c59a 0%, #b89f69 100%);
-            font-family: "Times New Roman", Times, serif;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .sheet {
-            width: min(980px, calc(100% - 28px));
-            margin: 18px auto;
-            padding: 18px 18px 12px;
-            background:
-                linear-gradient(180deg, rgba(255, 248, 213, 0.82), rgba(236, 214, 120, 0.88)),
-                var(--paper);
-            border: 1px solid rgba(41, 25, 15, 0.3);
-            box-shadow: 0 18px 40px var(--shadow);
-        }
-
-        .topnav {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 14px;
-            font-size: 0.76rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
-
-        .topnav-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .topnav a:hover {
-            text-decoration: underline;
-        }
-
-        .masthead {
-            border: 2px solid var(--rule);
-            padding: 8px 14px 6px;
-            margin-bottom: 16px;
-            background: rgba(255, 248, 213, 0.42);
-        }
-
-        .masthead h1 {
-            margin: 0;
-            font-size: clamp(2rem, 4vw, 3.4rem);
-            line-height: 0.94;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-        }
-
-        .layout {
-            display: grid;
-            grid-template-columns: 220px minmax(0, 1fr);
-            gap: 16px;
-        }
-
-        .sidebar-stack,
-        .content-stack {
-            display: grid;
-            gap: 14px;
-        }
-
-        .left-graphs {
-            display: grid;
-            gap: 10px;
-        }
-
-        .graph-box,
-        .diagram-box,
-        .article-box,
-        .address-strip {
-            border: 1px solid var(--rule);
-            background: var(--panel);
-        }
-
-        .graph-box {
-            padding: 8px;
-        }
-
-        .graph-box svg,
-        .diagram-box svg {
-            display: block;
-            width: 100%;
-            height: auto;
-            background: rgba(255, 243, 187, 0.34);
-        }
-
-        .article-box {
-            padding: 8px 10px 10px;
-        }
-
-        .article-box h2 {
-            margin: 0 0 6px;
-            font-size: clamp(1.2rem, 2.2vw, 2rem);
-            line-height: 0.98;
-        }
-
-        .article-box p,
-        .address-strip p,
-        .label,
-        .graph-caption {
-            margin: 0;
-            font-size: 0.86rem;
-            line-height: 1.28;
-        }
-
-        .two-col {
-            column-count: 2;
-            column-gap: 18px;
-        }
-
-        .lead-row {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 320px;
-            gap: 14px;
-            align-items: start;
-        }
-
-        .address-strip {
-            padding: 8px 10px;
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 10px;
-        }
-
-        .address-strip strong {
-            display: block;
-            margin-bottom: 2px;
-            font-size: 0.74rem;
-            text-transform: uppercase;
-        }
-
-        .bottom-row {
-            display: grid;
-            grid-template-columns: 240px minmax(0, 1fr) 220px;
-            gap: 14px;
-            align-items: start;
-        }
-
-        .diagram-box {
-            padding: 8px;
-        }
-
-        .diagram-stack {
-            display: grid;
-            gap: 10px;
-        }
-
-        .footerline {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-top: 12px;
-            font-size: 0.76rem;
-            text-transform: uppercase;
-        }
-
-        .small-title {
-            margin: 0 0 6px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        @media (max-width: 900px) {
-            .layout,
-            .lead-row,
-            .bottom-row {
-                grid-template-columns: 1fr;
-            }
-
-            .address-strip {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 640px) {
-            .sheet {
-                width: min(100% - 12px, 980px);
-                padding: 12px;
-            }
-
-            .topnav,
-            .footerline {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .address-strip {
-                grid-template-columns: 1fr;
-            }
-
-            .two-col {
-                column-count: 1;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="madmaninstrumentlab-theme.css">
 </head>
 <body>
-    <main class="sheet">
-        <div class="topnav">
-            <div>MADMAN INDUSTRIES / INSTRUMENT LAB</div>
-            <div class="topnav-links">
+    <main class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>MADMAN INDUSTRIES / INSTRUMENT LAB</span>
+            </div>
+            <nav class="nav">
                 <a href="index.html">Main</a>
                 <a href="madmaninstrumentlab-hub.html">InstrumentLab Hub</a>
                 <a href="breadboard.html">Breadboard Mock</a>
-            </div>
-        </div>
-
-        <header class="masthead">
-            <h1>Applications Summary</h1>
+            </nav>
         </header>
 
-        <section class="layout">
-            <aside class="sidebar-stack">
-                <div class="left-graphs">
-                    <div class="graph-box">
-                        <svg viewBox="0 0 180 120" aria-label="line disturbance graph">
-                            <rect x="0" y="0" width="180" height="120" fill="none" stroke="rgba(31,20,15,0.45)" />
-                            <g stroke="rgba(31,20,15,0.18)" stroke-width="1">
-                                <line x1="20" y1="20" x2="20" y2="100"/>
-                                <line x1="20" y1="100" x2="160" y2="100"/>
-                                <line x1="20" y1="40" x2="160" y2="40"/>
-                                <line x1="20" y1="60" x2="160" y2="60"/>
-                                <line x1="20" y1="80" x2="160" y2="80"/>
-                                <line x1="55" y1="20" x2="55" y2="100"/>
-                                <line x1="90" y1="20" x2="90" y2="100"/>
-                                <line x1="125" y1="20" x2="125" y2="100"/>
-                            </g>
-                            <path d="M20 92 C50 90, 70 82, 95 64 S145 32, 160 28" fill="none" stroke="#20150e" stroke-width="2.2"/>
-                        </svg>
-                        <p class="graph-caption">Power-line disturbance / attenuation response</p>
-                    </div>
-                    <div class="graph-box">
-                        <svg viewBox="0 0 180 120" aria-label="comparative graph">
-                            <rect x="0" y="0" width="180" height="120" fill="none" stroke="rgba(31,20,15,0.45)" />
-                            <g stroke="rgba(31,20,15,0.18)" stroke-width="1">
-                                <line x1="20" y1="20" x2="20" y2="100"/>
-                                <line x1="20" y1="100" x2="160" y2="100"/>
-                                <line x1="20" y1="40" x2="160" y2="40"/>
-                                <line x1="20" y1="60" x2="160" y2="60"/>
-                                <line x1="20" y1="80" x2="160" y2="80"/>
-                            </g>
-                            <path d="M20 85 L50 70 L80 56 L110 42 L160 28" fill="none" stroke="#20150e" stroke-width="2"/>
-                            <path d="M20 98 C45 96, 75 88, 110 74 S145 50, 160 44" fill="none" stroke="#6f3b29" stroke-width="2"/>
-                            <path d="M20 105 C52 102, 88 94, 118 86 S150 72, 160 66" fill="none" stroke="#8d6f38" stroke-width="2"/>
-                        </svg>
-                        <p class="graph-caption">Isolation transformer / DC supply / neutral performance</p>
-                    </div>
+        <section class="hero">
+            <div class="hero-copy">
+                <span class="eyebrow">Applications Summary / Technical Sheet</span>
+                <div class="year-mark">2026</div>
+                <h1>Applications Summary</h1>
+                <p>
+                    A condensed technical sheet for the current MadManInstrumentLab direction. Instead of the earlier
+                    collage of boxes and diagrams, the content now sits inside the same paper-driven poster language used
+                    across the rest of the subsection.
+                </p>
+                <div class="chip-row">
+                    <span class="chip">Power entry</span>
+                    <span class="chip">Surface mount</span>
+                    <span class="chip">Thermal control</span>
+                    <span class="chip">Bench utility</span>
                 </div>
+            </div>
 
-                <div class="article-box">
-                    <h2>Resistors for surface mounting</h2>
-                    <p class="two-col">
-                        In laboratory instrument work, resistor choice directly affects stability, long-term drift,
-                        and how quickly a prototype can be revised. This section of the lab focuses on compact
-                        resistor packages that can be moved from early breadboard proof to denser instrument
-                        assemblies. Preferred parts are selected for repeatable soldering behavior, stable
-                        thermal response, and mechanical tolerance during rework. Surface-mount resistor families
-                        are grouped by assembly suitability, package geometry, and expected use in analog control
-                        paths, utility routing, and compact bench circuits.
-                    </p>
-                </div>
-            </aside>
-
-            <section class="content-stack">
-                <div class="lead-row">
-                    <div class="article-box">
-                        <h2>Power-line disturbances</h2>
-                        <p class="two-col">
-                            The MadManInstrumentLab program treats interference control as a foundational
-                            design problem rather than an afterthought. Instrument-adjacent circuits often live
-                            near noisy supplies, motors, switching edges, and mixed-voltage utility sections.
-                            For that reason, lab prototypes are evaluated for susceptibility to conducted noise,
-                            grounding faults, and coupling through shared rails. Typical work includes filtering,
-                            isolation strategy, power-entry conditioning, and layout choices that lower interference
-                            before enclosure design begins. The objective is not only clean measurement, but clean
-                            behavior when a circuit leaves the bench and becomes a real tool.
-                        </p>
-                    </div>
-
-                    <div class="graph-box">
-                        <svg viewBox="0 0 300 250" aria-label="temperature and package response graph">
-                            <rect x="0" y="0" width="300" height="250" fill="none" stroke="rgba(31,20,15,0.45)" />
-                            <g stroke="rgba(31,20,15,0.18)" stroke-width="1">
-                                <line x1="36" y1="20" x2="36" y2="220"/>
-                                <line x1="36" y1="220" x2="270" y2="220"/>
-                                <line x1="36" y1="60" x2="270" y2="60"/>
-                                <line x1="36" y1="100" x2="270" y2="100"/>
-                                <line x1="36" y1="140" x2="270" y2="140"/>
-                                <line x1="36" y1="180" x2="270" y2="180"/>
-                            </g>
-                            <path d="M36 208 C80 194, 116 172, 154 146 S232 86, 270 62" fill="none" stroke="#20150e" stroke-width="2.2"/>
-                            <path d="M36 202 C78 198, 116 188, 160 172 S232 134, 270 110" fill="none" stroke="#6f3b29" stroke-width="2"/>
-                            <path d="M36 198 C82 196, 126 192, 168 184 S234 162, 270 148" fill="none" stroke="#8d6f38" stroke-width="2"/>
-                            <text x="210" y="58" font-size="10">Rectangular chip with thick film</text>
-                            <text x="198" y="110" font-size="10">Mini-MELF thin film</text>
-                            <text x="208" y="148" font-size="10">Rectangular chip thin film</text>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="address-strip">
-                    <p><strong>Addresses</strong>MadManInstrumentLab<br>Bench Group 01<br>Signal Yard</p>
-                    <p><strong>Lab Channels</strong>Prototype review<br>Routing tests<br>Interface drafts</p>
-                    <p><strong>Core Systems</strong>Power entry<br>Control circuits<br>Instrument utility</p>
-                    <p><strong>Program Note</strong>Experimental hardware<br>Mock landing format<br>Future modules</p>
-                </div>
-
-                <div class="bottom-row">
-                    <div class="diagram-stack">
-                        <div class="diagram-box">
-                            <p class="small-title">Termination behavior</p>
-                            <svg viewBox="0 0 220 140" aria-label="termination diagram">
-                                <rect x="0" y="0" width="220" height="140" fill="none" stroke="rgba(31,20,15,0.45)"/>
-                                <line x1="20" y1="24" x2="110" y2="24" stroke="#20150e" stroke-width="2"/>
-                                <line x1="20" y1="46" x2="100" y2="46" stroke="#20150e" stroke-width="2"/>
-                                <line x1="20" y1="68" x2="92" y2="68" stroke="#20150e" stroke-width="2"/>
-                                <line x1="20" y1="92" x2="84" y2="92" stroke="#20150e" stroke-width="2"/>
-                                <path d="M116 20 L178 20 L198 52" fill="none" stroke="#6f3b29" stroke-width="2"/>
-                                <path d="M104 44 L168 44 L196 82" fill="none" stroke="#6f3b29" stroke-width="2"/>
-                                <path d="M96 66 L162 66 L194 108" fill="none" stroke="#6f3b29" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <div class="diagram-box">
-                            <p class="small-title">Surface geometry</p>
-                            <svg viewBox="0 0 220 140" aria-label="surface geometry diagram">
-                                <rect x="0" y="0" width="220" height="140" fill="none" stroke="rgba(31,20,15,0.45)"/>
-                                <polygon points="26,102 86,78 152,92 98,116" fill="none" stroke="#20150e" stroke-width="2"/>
-                                <line x1="86" y1="78" x2="86" y2="38" stroke="#6f3b29" stroke-width="2"/>
-                                <line x1="152" y1="92" x2="152" y2="50" stroke="#6f3b29" stroke-width="2"/>
-                                <line x1="98" y1="116" x2="98" y2="74" stroke="#6f3b29" stroke-width="2"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="article-box">
-                        <h2>Thermal shock in surface-mounted capacitors</h2>
-                        <p class="two-col">
-                            Surface-mounted components in the lab are reviewed for more than electrical value.
-                            Assembly temperature, rework exposure, and board geometry all shape whether a
-                            compact part survives real use. This section documents the practical concern:
-                            repeated thermal cycling can fracture a package, weaken a joint, or make a stable
-                            prototype unreliable after only a few revisions. Within MadManInstrumentLab, the
-                            preferred approach is to test for mechanical strain early, pay attention to pad
-                            geometry, and keep assembly methods consistent enough that bench discoveries scale
-                            into durable hardware. Thermal management is therefore treated as a layout and
-                            process issue, not just a component specification issue.
-                        </p>
-                    </div>
-
-                    <div class="diagram-box">
-                        <p class="small-title">Stress profile</p>
-                        <svg viewBox="0 0 200 280" aria-label="stress profile chart">
-                            <rect x="0" y="0" width="200" height="280" fill="none" stroke="rgba(31,20,15,0.45)"/>
-                            <path d="M28 30 C72 38, 112 56, 150 88 C168 104, 170 132, 144 152 C116 174, 112 208, 146 238" fill="none" stroke="#20150e" stroke-width="2.2"/>
-                            <path d="M36 42 C60 92, 82 118, 110 154" fill="none" stroke="#8d6f38" stroke-width="1.8"/>
-                            <path d="M58 58 C88 110, 120 146, 156 192" fill="none" stroke="#6f3b29" stroke-width="1.8"/>
-                            <text x="118" y="38" font-size="10">Stress profile</text>
-                            <text x="118" y="154" font-size="10">Solder joint</text>
-                            <text x="118" y="242" font-size="10">Severed leads</text>
-                        </svg>
-                    </div>
-                </div>
-            </section>
+            <figure class="photo-panel">
+                <img src="MMI_designassets/unnamed1.webp" alt="A blueprint-style line drawing of a retro computer terminal on a blue field.">
+                <figcaption>System drawing / monochrome blueprint treatment</figcaption>
+            </figure>
         </section>
 
-        <div class="footerline">
+        <section class="legend-box" aria-label="applications legend">
+            <span class="legend-title">Legend</span>
+            <div class="legend-items">
+                <span>Power</span>
+                <span>Resistors</span>
+                <span>Thermal</span>
+                <span>Layout</span>
+                <span>Utility</span>
+            </div>
+        </section>
+
+        <section class="page-main">
+            <div class="panel-grid three-up page-section">
+                <article class="panel-card">
+                    <span class="panel-kicker">Interference</span>
+                    <h2>Power-Line Disturbances</h2>
+                    <p>
+                        The lab treats interference control as a foundational design problem. Prototypes are reviewed for
+                        grounding faults, conducted noise, and coupling through shared rails before enclosure design begins.
+                    </p>
+                </article>
+
+                <article class="panel-card">
+                    <span class="panel-kicker">Components</span>
+                    <h2>Resistors for Surface Mounting</h2>
+                    <p>
+                        Preferred resistor packages are selected for repeatable soldering behavior, stable thermal response,
+                        and mechanical tolerance during rework as circuits move from breadboard proof to compact assemblies.
+                    </p>
+                </article>
+
+                <article class="panel-card">
+                    <span class="panel-kicker">Reliability</span>
+                    <h2>Thermal Shock in SMD Capacitors</h2>
+                    <p>
+                        Repeated thermal cycling can fracture packages, weaken joints, and turn stable prototypes unreliable.
+                        The lab treats thermal management as a layout and process issue, not only a component spec issue.
+                    </p>
+                </article>
+            </div>
+
+            <div class="panel-grid three-up page-section">
+                <article class="note-card">
+                    <span class="section-label">Bench Focus</span>
+                    <h3>Termination Behavior</h3>
+                    <p>
+                        Signal paths are reviewed for routing clarity, termination behavior, and predictable response once a
+                        circuit leaves the bench and becomes a durable tool.
+                    </p>
+                </article>
+
+                <article class="note-card">
+                    <span class="section-label">Mechanical</span>
+                    <h3>Surface Geometry</h3>
+                    <p>
+                        Pad geometry, board strain, and enclosure-adjacent stresses are reviewed early so bench discoveries
+                        can scale into production-safe hardware.
+                    </p>
+                </article>
+
+                <article class="note-card">
+                    <span class="section-label">Program Note</span>
+                    <h3>Instrument Utility</h3>
+                    <p>
+                        Typical work includes filtering, isolation strategy, power-entry conditioning, and layout choices that
+                        lower interference before any public-facing build is considered finished.
+                    </p>
+                </article>
+            </div>
+
+            <div class="notes-grid page-section">
+                <article class="note-card">
+                    <span class="section-label">Addresses</span>
+                    <h3>Lab Channels</h3>
+                    <ul class="note-list">
+                        <li>MadManInstrumentLab / Bench Group 01 / Signal Yard</li>
+                        <li>Prototype review / routing tests / interface drafts</li>
+                        <li>Power entry / control circuits / instrument utility</li>
+                    </ul>
+                </article>
+
+                <article class="note-card">
+                    <span class="section-label">Role</span>
+                    <h3>Program Summary</h3>
+                    <p>
+                        This page now functions as the technical summary sheet inside the wider document system rather than
+                        as an isolated standalone aesthetic.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <footer class="footer-line">
             <span>114</span>
             <span>MadManInstrumentLab / Applications Summary</span>
-        </div>
+        </footer>
     </main>
 </body>
 </html>
