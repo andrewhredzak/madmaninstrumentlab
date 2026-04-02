@@ -27,36 +27,40 @@ body {
     position: relative;
 }
 
-.media-player-wrap {
-    position: relative;
-    z-index: 1;
-    padding: 1.15rem 2rem 0;
+.site-landing .media-player-wrap {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 20;
+    width: min(22rem, calc(100vw - 2rem));
+    padding: 0;
+    pointer-events: none;
 }
 
 .site-landing .media-player {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
-    gap: 1.1rem;
-    align-items: end;
-    padding: 1rem 1.1rem 1.05rem;
-    border: 1px solid var(--line-strong);
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(242, 236, 227, 0.94)),
-        var(--paper);
-    box-shadow: 0 18px 38px rgba(41, 28, 18, 0.14);
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    align-items: stretch;
+    padding: 0.9rem 0.95rem 1rem;
+    border: 1px solid rgba(23, 18, 13, 0.12);
+    background: rgba(248, 245, 240, 0.78);
+    backdrop-filter: blur(8px);
+    box-shadow: none;
     overflow: hidden;
+    pointer-events: auto;
 }
 
 .site-landing .media-player::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: 6px;
+    border: 1px solid rgba(23, 18, 13, 0.07);
     pointer-events: none;
     background:
-        linear-gradient(90deg, rgba(217, 43, 43, 0.18), transparent 16%, transparent 84%, rgba(23, 18, 13, 0.05)),
-        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0 1px, transparent 1px 7px);
-    opacity: 0.4;
+        linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(242, 236, 227, 0.12)),
+        repeating-linear-gradient(0deg, rgba(23, 18, 13, 0.03) 0 1px, transparent 1px 9px);
 }
 
 .site-landing .media-player-copy,
@@ -66,7 +70,7 @@ body {
 }
 
 .site-landing .media-player-copy {
-    padding-right: 0.3rem;
+    padding-right: 0;
 }
 
 .site-landing .media-player-label {
@@ -82,27 +86,29 @@ body {
 .site-landing .media-player-title {
     margin: 0;
     font-family: "Special Gothic Expanded One", sans-serif;
-    font-size: clamp(1.15rem, 2.2vw, 1.85rem);
+    font-size: clamp(1rem, 1.35vw, 1.18rem);
     letter-spacing: 0.03em;
-    line-height: 1;
+    line-height: 1.15;
 }
 
 .site-landing .media-player-note {
-    max-width: 30rem;
-    margin: 0.65rem 0 0;
+    max-width: none;
+    margin: 0.55rem 0 0;
     color: var(--muted);
-    font-size: 0.84rem;
-    line-height: 1.75;
+    font-size: 0.72rem;
+    line-height: 1.55;
 }
 
 .site-landing .media-player-controls {
-    padding-left: 1rem;
-    border-left: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 0.8rem;
+    border-left: 0;
+    border-top: 1px solid rgba(23, 18, 13, 0.08);
 }
 
 .site-landing .media-player audio {
     width: 100%;
-    height: 38px;
+    height: 34px;
     display: block;
 }
 
@@ -143,6 +149,10 @@ img {
         var(--paper);
     overflow: hidden;
     box-shadow: 0 24px 70px var(--shadow);
+}
+
+.site-landing .shell {
+    margin-top: 10rem;
 }
 
 .shell::before {
@@ -377,10 +387,21 @@ h1 {
     text-transform: uppercase;
 }
 
-.legend-items span {
+.legend-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.25rem 0.45rem;
     border: 1px solid rgba(23, 18, 13, 0.1);
     background: rgba(255, 255, 255, 0.45);
+    transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.legend-link:hover,
+.legend-link:focus-visible {
+    background: rgba(217, 43, 43, 0.08);
+    border-color: rgba(23, 18, 13, 0.2);
+    transform: translateY(-1px);
 }
 
 .page-main,
@@ -686,6 +707,10 @@ h1 {
         margin: 8px auto;
     }
 
+    .site-landing .shell {
+        margin-top: 9rem;
+    }
+
     .topbar,
     .footer-line {
         flex-direction: column;
@@ -694,7 +719,6 @@ h1 {
 
     .hero,
     .page-main,
-    .media-player-wrap,
     .schedule-wrap,
     .notes-grid {
         padding-left: 1rem;
@@ -709,16 +733,16 @@ h1 {
         width: min(100% - 2rem, 440px);
     }
 
-    .site-landing .media-player {
-        grid-template-columns: 1fr;
-        gap: 0.9rem;
-        padding: 0.9rem 0.95rem 1rem;
+    .site-landing .media-player-wrap {
+        top: 0.75rem;
+        left: 0.75rem;
+        width: min(18rem, calc(100vw - 1.5rem));
     }
 
     .site-landing .media-player-controls {
         padding-left: 0;
         border-left: 0;
-        border-top: 1px solid var(--line);
+        border-top: 1px solid rgba(23, 18, 13, 0.08);
         padding-top: 0.9rem;
     }
 }
