@@ -279,6 +279,7 @@ h1 {
 }
 
 .page-main,
+.poster-feature,
 .schedule-wrap,
 .notes-grid {
     position: relative;
@@ -289,6 +290,59 @@ h1 {
 
 .page-main {
     padding-bottom: 2rem;
+}
+
+.poster-feature {
+    display: grid;
+    grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+    padding-bottom: 2rem;
+}
+
+.poster-copy {
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.32);
+    padding: 1.1rem 1.15rem 1.2rem;
+}
+
+.poster-copy h2 {
+    margin-top: 0.55rem;
+    font-size: clamp(1.3rem, 2.4vw, 2rem);
+    line-height: 1.02;
+}
+
+.poster-copy p {
+    margin: 0.8rem 0 0;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 0.94rem;
+}
+
+.poster-panel {
+    position: relative;
+    margin: 0;
+    padding: 12px 12px 34px;
+    background: #120f0d;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 10px 30px rgba(23, 18, 13, 0.14);
+}
+
+.poster-panel img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.poster-panel figcaption {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 10px;
+    color: rgba(248, 245, 240, 0.82);
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
 }
 
 .page-section + .page-section {
@@ -475,6 +529,10 @@ h1 {
     .hero {
         grid-template-columns: 1fr;
         align-items: start;
+    }
+
+    .poster-feature {
+        grid-template-columns: 1fr;
     }
 
     .photo-panel {
