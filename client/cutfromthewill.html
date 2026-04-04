@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut From The Will | MadMan Studios</title>
+    <link rel="icon" href="MMI_designassets/snap_favicon_transcrop3.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #f7efe3;
+            --ink: #1f1710;
+            --muted: rgba(31, 23, 16, 0.7);
+            --line: rgba(31, 23, 16, 0.18);
+            --orange: #ff9b1f;
+            --red: #9d1919;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--ink);
+            font-family: "IBM Plex Mono", monospace;
+            background:
+                linear-gradient(rgba(247, 239, 227, 0.92), rgba(247, 239, 227, 0.94)),
+                linear-gradient(180deg, #fff7ec 0%, #efe2d1 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .shell {
+            width: min(980px, calc(100% - 32px));
+            margin: 20px auto;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.42);
+        }
+
+        .topbar,
+        .content,
+        .footer {
+            padding: 1.2rem 1.4rem;
+        }
+
+        .topbar,
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .topbar {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .brand,
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .brand-mark {
+            width: 12px;
+            height: 12px;
+            background: var(--orange);
+            flex: 0 0 auto;
+        }
+
+        .brand span,
+        .nav a,
+        .eyebrow,
+        .footer {
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .content {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 0.9rem;
+            color: var(--muted);
+        }
+
+        h1 {
+            margin: 0;
+            font-family: "Special Gothic Expanded One", sans-serif;
+            font-size: clamp(2.2rem, 8vw, 5rem);
+            line-height: 0.92;
+            letter-spacing: 0.03em;
+        }
+
+        p {
+            max-width: 46rem;
+            margin: 1rem 0 0;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .video-frame {
+            width: min(100%, 860px);
+            margin: 1.6rem 0 0;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.8rem;
+        }
+
+        .video-frame iframe {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 0;
+        }
+
+        .footer {
+            color: var(--muted);
+        }
+
+        @media (max-width: 680px) {
+            .shell {
+                width: min(100% - 16px, 980px);
+                margin: 8px auto;
+            }
+
+            .topbar,
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>MADMAN INDUSTRIES / CUT FROM THE WILL</span>
+            </div>
+            <nav class="nav">
+                <a href="madmanstudios.html">MadMan Studios</a>
+                <a href="index.html">Main</a>
+            </nav>
+        </header>
+
+        <section class="content">
+            <span class="eyebrow">Studios Placeholder</span>
+            <h1>Cut From The Will</h1>
+            <p>
+                This is a basic placeholder page for Cut From The Will inside the MadMan Studios section. It is ready for
+                project notes, artwork, release details, or any future studio-specific material.
+            </p>
+            <div class="video-frame">
+                <iframe
+                    src="https://www.youtube.com/embed/XwQMZOrI274"
+                    title="Cut From The Will video"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <span>MADMAN INDUSTRIES</span>
+            <span>Studios Placeholder</span>
+        </footer>
+    </main>
+</body>
+</html>
