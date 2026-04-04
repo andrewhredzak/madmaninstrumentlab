@@ -34,6 +34,95 @@
                 linear-gradient(180deg, #fff7ec 0%, #efe2d1 100%);
         }
 
+        .site-studios .media-player-wrap {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 20;
+            width: min(22rem, calc(100vw - 2rem));
+            padding: 0;
+            pointer-events: none;
+        }
+
+        .site-studios .media-player {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.9rem;
+            align-items: stretch;
+            padding: 0.9rem 0.95rem 1rem;
+            border: 1px solid rgba(77, 37, 0, 0.12);
+            background: rgba(255, 247, 236, 0.8);
+            backdrop-filter: blur(8px);
+            box-shadow: none;
+            overflow: hidden;
+            pointer-events: auto;
+        }
+
+        .site-studios .media-player::before {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border: 1px solid rgba(77, 37, 0, 0.08);
+            pointer-events: none;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(255, 235, 214, 0.14)),
+                repeating-linear-gradient(0deg, rgba(77, 37, 0, 0.03) 0 1px, transparent 1px 9px);
+        }
+
+        .site-studios .media-player-copy,
+        .site-studios .media-player-controls {
+            position: relative;
+            z-index: 1;
+        }
+
+        .site-studios .media-player-label {
+            display: inline-block;
+            margin-bottom: 0.45rem;
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .site-studios .media-player-title {
+            margin: 0;
+            font-family: "Special Gothic Expanded One", sans-serif;
+            font-size: clamp(1rem, 1.35vw, 1.18rem);
+            letter-spacing: 0.03em;
+            line-height: 1.15;
+        }
+
+        .site-studios .media-player-note {
+            max-width: none;
+            margin: 0.55rem 0 0;
+            color: var(--muted);
+            font-size: 0.72rem;
+            line-height: 1.55;
+            text-align: left;
+        }
+
+        .site-studios .media-player-controls {
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(77, 37, 0, 0.09);
+        }
+
+        .site-studios .media-player audio {
+            width: 100%;
+            height: 34px;
+            display: block;
+        }
+
+        .site-studios .player-status {
+            margin: 0.55rem 0 0;
+            color: var(--muted);
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-align: left;
+        }
+
         a {
             color: inherit;
             text-decoration: none;
@@ -44,6 +133,10 @@
             margin: 20px auto;
             border: 1px solid var(--line);
             background: rgba(255, 255, 255, 0.42);
+        }
+
+        .site-studios .shell {
+            margin-top: 10rem;
         }
 
         .topbar,
@@ -293,6 +386,61 @@
             display: block;
         }
 
+        .studio-legend {
+            position: relative;
+            width: min(780px, 100%);
+            margin: 1.6rem auto 0;
+            padding: 1rem 1.2rem 1.15rem;
+            border: 1px solid rgba(77, 37, 0, 0.28);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(247, 239, 227, 0.32)),
+                rgba(255, 248, 240, 0.5);
+        }
+
+        .studio-legend::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 58px;
+            height: 4px;
+            transform: translate(-50%, -1px);
+            background: var(--cube-red);
+        }
+
+        .studio-legend-title {
+            display: block;
+            margin-bottom: 0.9rem;
+            color: var(--muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .studio-legend-items {
+            display: flex;
+            justify-content: center;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .studio-legend-link {
+            padding: 0.45rem 0.7rem;
+            border: 1px solid rgba(77, 37, 0, 0.12);
+            background: rgba(255, 255, 255, 0.36);
+            color: var(--ink);
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .studio-legend-link:hover,
+        .studio-legend-link:focus-visible {
+            border-color: rgba(77, 37, 0, 0.42);
+            background: rgba(255, 155, 31, 0.16);
+        }
+
         .footer {
             color: var(--muted);
         }
@@ -301,6 +449,10 @@
             .shell {
                 width: min(100% - 16px, 980px);
                 margin: 8px auto;
+            }
+
+            .site-studios .shell {
+                margin-top: 9.75rem;
             }
 
             .topbar,
@@ -321,10 +473,33 @@
                 transform: scale(0.68);
                 transform-origin: top center;
             }
+
+            .studio-legend {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
         }
     </style>
 </head>
-<body>
+<body class="site-studios">
+    <section class="media-player-wrap" aria-label="Studio music player">
+        <div class="media-player">
+            <div class="media-player-copy">
+                <span class="media-player-label">Studio Audio</span>
+                <p class="media-player-title">Ye / Punchdrunk Love</p>
+                <p class="media-player-note">
+                    Playback for the studios page. If the browser blocks autoplay, one tap or key press will unlock it.
+                </p>
+            </div>
+            <div class="media-player-controls">
+                <audio id="studioTrack" controls autoplay preload="auto" playsinline>
+                    <source src="MMI_designassets/songs/Ye_punchdrunklove.mp3" type="audio/mpeg">
+                </audio>
+                <p class="player-status" id="studioPlayerStatus">Attempting autoplay on page load.</p>
+            </div>
+        </div>
+    </section>
+
     <main class="shell">
         <header class="topbar">
             <div class="brand">
@@ -345,6 +520,13 @@
                 This is a basic placeholder page for the studio side of the brand. It is live as a destination now, and can
                 be expanded later with projects, releases, production notes, or a dedicated studio overview.
             </p>
+            <section class="studio-legend" aria-label="studio legend">
+                <span class="studio-legend-title">Legend</span>
+                <div class="studio-legend-items">
+                    <a class="studio-legend-link" href="cutfromthewill.html">Cut From The Will</a>
+                    <a class="studio-legend-link" href="corpuscallosum.html">Corpuscallosum</a>
+                </div>
+            </section>
             <div class="cube-stage" aria-hidden="true">
                 <div class="cube-field">
                     <div class="cube-shell">
@@ -400,5 +582,50 @@
             <span>Studios Placeholder</span>
         </footer>
     </main>
+
+    <script>
+        const studioTrack = document.getElementById("studioTrack");
+        const studioPlayerStatus = document.getElementById("studioPlayerStatus");
+
+        const setStudioPlayerStatus = (message) => {
+            studioPlayerStatus.textContent = message;
+        };
+
+        const tryStudioAutoplay = async () => {
+            if (!studioTrack.paused) {
+                setStudioPlayerStatus("Playing on load.");
+                return;
+            }
+
+            try {
+                await studioTrack.play();
+                setStudioPlayerStatus("Playing on load.");
+            } catch (error) {
+                setStudioPlayerStatus("Autoplay was blocked. Press play or tap anywhere once.");
+            }
+        };
+
+        const unlockStudioPlayback = () => {
+            tryStudioAutoplay();
+        };
+
+        tryStudioAutoplay();
+
+        ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
+            window.addEventListener(eventName, unlockStudioPlayback, { once: true });
+        });
+
+        studioTrack.addEventListener("play", () => {
+            setStudioPlayerStatus("Playing.");
+        });
+
+        studioTrack.addEventListener("pause", () => {
+            setStudioPlayerStatus("Paused.");
+        });
+
+        studioTrack.addEventListener("ended", () => {
+            setStudioPlayerStatus("Track finished.");
+        });
+    </script>
 </body>
 </html>
