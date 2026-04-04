@@ -37,13 +37,15 @@
         }
 
         .shell {
-            width: min(1120px, calc(100% - 32px));
-            margin: 20px auto;
+            width: min(1120px, 100%);
+            margin: 0 auto;
             border: 1px solid var(--line);
-            border-radius: 24px;
+            border-left: 0;
+            border-right: 0;
+            border-radius: 0;
             overflow: hidden;
             background: var(--panel);
-            box-shadow: 0 24px 64px var(--shadow);
+            box-shadow: none;
             backdrop-filter: blur(2px);
         }
 
@@ -135,10 +137,9 @@
             padding: 1.5rem;
         }
 
-        .sticker-card,
-        .notes {
+        .sticker-card {
             border: 1px solid var(--line);
-            border-radius: 20px;
+            border-radius: 0;
             background: var(--panel-soft);
         }
 
@@ -149,7 +150,7 @@
         .sticker-card img {
             width: 100%;
             display: block;
-            border-radius: 14px;
+            border-radius: 0;
             background: rgba(243, 225, 197, 0.06);
             margin-bottom: 0.9rem;
         }
@@ -159,23 +160,11 @@
             font-size: 1rem;
         }
 
-        .sticker-card p,
-        .notes p,
-        .notes li {
+        .sticker-card p {
             margin: 0;
             color: var(--muted);
             line-height: 1.7;
             font-size: 0.94rem;
-        }
-
-        .notes {
-            margin: 0 1.5rem 1.5rem;
-            padding: 1rem 1.1rem;
-        }
-
-        .notes ul {
-            margin: 0.7rem 0 0;
-            padding-left: 1rem;
         }
 
         .footer-line {
@@ -198,9 +187,7 @@
 
         @media (max-width: 680px) {
             .shell {
-                width: min(100% - 16px, 1120px);
-                margin: 8px auto;
-                border-radius: 18px;
+                width: 100%;
             }
 
             .topbar,
@@ -210,14 +197,10 @@
             }
 
             .sticker-grid,
-            .notes {
+            .hero,
+            .footer-line {
                 padding-left: 1rem;
                 padding-right: 1rem;
-            }
-
-            .notes {
-                margin-left: 1rem;
-                margin-right: 1rem;
             }
         }
     </style>
@@ -261,19 +244,6 @@
                     A second sticker concept positioned as part of the same early merch system and visual language.
                 </p>
             </article>
-        </section>
-
-        <section class="notes">
-            <h2>Current Direction</h2>
-            <p>
-                The merch section is intentionally narrow for now and centered on sticker releases before expanding into shirts,
-                posters, or accessory objects.
-            </p>
-            <ul>
-                <li>Use merch pages as simple campaign surfaces rather than dense storefronts.</li>
-                <li>Keep product focus on one small collection at a time.</li>
-                <li>Expand later if you want pricing, product variants, or checkout-style mockups.</li>
-            </ul>
         </section>
 
         <footer class="footer-line">
